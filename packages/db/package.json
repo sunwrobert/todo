@@ -1,0 +1,29 @@
+{
+  "name": "@todo/db",
+  "type": "module",
+  "exports": {
+    ".": {
+      "default": "./src/index.ts"
+    },
+    "./*": {
+      "default": "./src/*.ts"
+    }
+  },
+  "scripts": {
+    "db:push": "drizzle-kit push",
+    "db:generate": "drizzle-kit generate"
+  },
+  "devDependencies": {
+    "drizzle-kit": "^0.31.8",
+    "typescript": "catalog:",
+    "@todo/config": "workspace:*"
+  },
+  "dependencies": {
+    "drizzle-orm": "^0.45.1",
+    "@libsql/client": "catalog:",
+    "libsql": "catalog:",
+    "dotenv": "catalog:",
+    "zod": "catalog:",
+    "@todo/env": "workspace:*"
+  }
+}
