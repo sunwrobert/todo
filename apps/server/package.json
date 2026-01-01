@@ -27,7 +27,6 @@
     "@todo/config": "workspace:*",
     "alchemy": "catalog:",
     "wrangler": "^4.54.0",
-    "@types/node": "catalog:",
-    "@cloudflare/workers-types": "catalog:"
+    "@types/node": "catalog:"
   }
 }
