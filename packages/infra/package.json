@@ -5,13 +5,15 @@
   "scripts": {
     "dev": "alchemy dev",
     "deploy": "alchemy deploy",
-    "destroy": "alchemy destroy"
+    "destroy": "alchemy destroy",
+    "check-types": "tsgo --noEmit"
   },
   "dependencies": {
     "dotenv": "catalog:",
     "zod": "catalog:"
   },
   "devDependencies": {
+    "@typescript/native-preview": "catalog:",
     "alchemy": "catalog:",
     "typescript": "catalog:",
     "@todo/config": "workspace:*"

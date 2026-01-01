@@ -7,12 +7,16 @@
     "./server": "./src/server.ts",
     "./web": "./src/web.ts"
   },
+  "scripts": {
+    "check-types": "tsgo --noEmit"
+  },
   "dependencies": {
     "zod": "catalog:",
     "@t3-oss/env-core": "^0.13.1",
     "dotenv": "catalog:"
   },
   "devDependencies": {
+    "@typescript/native-preview": "catalog:",
     "typescript": "catalog:",
     "@types/node": "catalog:",
     "@todo/config": "workspace:*",

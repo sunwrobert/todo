@@ -5,7 +5,8 @@
   "scripts": {
     "build": "vite build",
     "serve": "vite preview",
-    "dev:bare": "vite dev"
+    "dev:bare": "vite dev",
+    "check-types": "tsgo --noEmit"
   },
   "dependencies": {
     "@base-ui/react": "^1.0.0",
@@ -41,6 +42,7 @@
     "@todo/auth": "workspace:*"
   },
   "devDependencies": {
+    "@typescript/native-preview": "catalog:",
     "@tanstack/react-router-devtools": "^1.141.1",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/react": "^16.2.0",

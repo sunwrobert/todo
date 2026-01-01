@@ -11,9 +11,11 @@
   },
   "scripts": {
     "db:push": "drizzle-kit push",
-    "db:generate": "drizzle-kit generate"
+    "db:generate": "drizzle-kit generate",
+    "check-types": "tsgo --noEmit"
   },
   "devDependencies": {
+    "@typescript/native-preview": "catalog:",
     "drizzle-kit": "^0.31.8",
     "typescript": "catalog:",
     "@todo/config": "workspace:*"

@@ -9,8 +9,11 @@
       "default": "./src/*.ts"
     }
   },
-  "scripts": {},
+  "scripts": {
+    "check-types": "tsgo --noEmit"
+  },
   "devDependencies": {
+    "@typescript/native-preview": "catalog:",
     "typescript": "catalog:",
     "@todo/config": "workspace:*"
   },

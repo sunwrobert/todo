@@ -9,7 +9,9 @@
       "default": "./src/*.ts"
     }
   },
-  "scripts": {},
+  "scripts": {
+    "check-types": "tsgo --noEmit"
+  },
   "dependencies": {
     "@orpc/server": "catalog:",
     "@orpc/client": "catalog:",
@@ -23,6 +25,7 @@
     "@todo/db": "workspace:*"
   },
   "devDependencies": {
+    "@typescript/native-preview": "catalog:",
     "typescript": "catalog:",
     "@todo/config": "workspace:*"
   }

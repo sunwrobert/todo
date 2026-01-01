@@ -20,7 +20,8 @@
       "alchemy": "^0.82.1",
       "@orpc/client": "^1.12.2",
       "@libsql/client": "0.15.15",
-      "libsql": "0.5.22"
+      "libsql": "0.5.22",
+      "@typescript/native-preview": "^7.0.0-dev.20260101.1"
     }
   },
   "type": "module",
@@ -43,9 +44,10 @@
     "@todo/env": "workspace:*"
   },
   "devDependencies": {
-    "typescript": "catalog:",
-    "@types/node": "catalog:",
+    "@cloudflare/workers-types": "catalog:",
     "@todo/config": "workspace:*",
-    "@cloudflare/workers-types": "catalog:"
+    "@types/node": "catalog:",
+    "@typescript/native-preview": "catalog:",
+    "typescript": "catalog:"
   }
 }
