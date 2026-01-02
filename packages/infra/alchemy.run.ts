@@ -4,9 +4,12 @@ import { Worker } from "alchemy/cloudflare";
 import { D1Database } from "alchemy/cloudflare";
 import { config } from "dotenv";
 
-config({ path: "./.env" });
-config({ path: "../../apps/web/.env" });
-config({ path: "../../apps/server/.env" });
+const envSuffix = process.env.IS_DEV === "true" ? ".dev" : "";
+
+config({ path: `./.env${envSuffix}` });
+config({ path: `../../apps/web/.env${envSuffix}` });
+config({ path: `../../apps/server/.env${envSuffix}` });
+
 
 const app = await alchemy("todo");
 

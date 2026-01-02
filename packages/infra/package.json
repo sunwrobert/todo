@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "alchemy dev",
+    "dev": "IS_DEV=true alchemy dev",
     "deploy": "alchemy deploy",
     "destroy": "alchemy destroy",
     "check-types": "tsgo --noEmit"
