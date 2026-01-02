@@ -23,46 +23,46 @@ import {
 } from "@/components/ui/sidebar"
 
 export function Page() {
-  return (
-    <SidebarProvider>
-      <AppSidebar />
-      <SidebarInset>
-        <header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-12">
-          <div className="flex items-center gap-2 px-4">
-            <SidebarTrigger className="-ml-1" />
-            <Separator
+return (
+<SidebarProvider>
+<AppSidebar />
+<SidebarInset>
+<header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-12">
+<div className="flex items-center gap-2 px-4">
+<SidebarTrigger className="-ml-1" />
+<Separator
               orientation="vertical"
               className="mr-2 data-[orientation=vertical]:h-4"
             />
-            <Breadcrumb>
-              <BreadcrumbList>
-                <BreadcrumbItem className="hidden md:block">
-                  <BreadcrumbLink href="#">
-                    Building Your Application
-                  </BreadcrumbLink>
-                </BreadcrumbItem>
-                <BreadcrumbSeparator className="hidden md:block" />
-                <BreadcrumbItem>
-                  <BreadcrumbPage>Data Fetching</BreadcrumbPage>
-                </BreadcrumbItem>
-              </BreadcrumbList>
-            </Breadcrumb>
-          </div>
-        </header>
-        <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
-          <div className="grid auto-rows-min gap-4 md:grid-cols-3">
-            <div className="bg-muted/50 aspect-video rounded-xl" />
-            <div className="bg-muted/50 aspect-video rounded-xl" />
-            <div className="bg-muted/50 aspect-video rounded-xl" />
-          </div>
-          <div className="bg-muted/50 min-h-[100vh] flex-1 rounded-xl md:min-h-min" />
-        </div>
-      </SidebarInset>
-    </SidebarProvider>
-  )
+<Breadcrumb>
+<BreadcrumbList>
+<BreadcrumbItem className="hidden md:block">
+<BreadcrumbLink href="#">
+Building Your Application
+</BreadcrumbLink>
+</BreadcrumbItem>
+<BreadcrumbSeparator className="hidden md:block" />
+<BreadcrumbItem>
+<BreadcrumbPage>Data Fetching</BreadcrumbPage>
+</BreadcrumbItem>
+</BreadcrumbList>
+</Breadcrumb>
+</div>
+</header>
+<div className="flex flex-1 flex-col gap-4 p-4 pt-0">
+<div className="grid auto-rows-min gap-4 md:grid-cols-3">
+<div className="bg-muted/50 aspect-video rounded-xl" />
+<div className="bg-muted/50 aspect-video rounded-xl" />
+<div className="bg-muted/50 aspect-video rounded-xl" />
+</div>
+<div className="bg-muted/50 min-h-[100vh] flex-1 rounded-xl md:min-h-min" />
+</div>
+</SidebarInset>
+</SidebarProvider>
+)
 }
 
-```
+````
   <figcaption className="text-center text-sm text-gray-500">
     A sidebar that collapses to icons.
   </figcaption>
@@ -95,7 +95,7 @@ Customizable.
 
 ```bash
 npx shadcn@latest add sidebar
-```
+````
 
 <Step>Add the following colors to your CSS file</Step>
 
@@ -371,90 +371,90 @@ You should see something like this:
 "use client"
 
 import {
-  CalendarIcon,
-  HomeIcon,
-  InboxIcon,
-  SearchIcon,
-  SettingsIcon,
+CalendarIcon,
+HomeIcon,
+InboxIcon,
+SearchIcon,
+SettingsIcon,
 } from "lucide-react"
 
 import {
-  Sidebar,
-  SidebarContent,
-  SidebarGroup,
-  SidebarGroupContent,
-  SidebarGroupLabel,
-  SidebarInset,
-  SidebarMenu,
-  SidebarMenuButton,
-  SidebarMenuItem,
-  SidebarProvider,
-  SidebarTrigger,
+Sidebar,
+SidebarContent,
+SidebarGroup,
+SidebarGroupContent,
+SidebarGroupLabel,
+SidebarInset,
+SidebarMenu,
+SidebarMenuButton,
+SidebarMenuItem,
+SidebarProvider,
+SidebarTrigger,
 } from "@/components/ui/sidebar"
 
 // Menu items.
 const items = [
-  {
-    title: "Home",
-    url: "#",
-    icon: HomeIcon,
-  },
-  {
-    title: "Inbox",
-    url: "#",
-    icon: InboxIcon,
-  },
-  {
-    title: "Calendar",
-    url: "#",
-    icon: CalendarIcon,
-  },
-  {
-    title: "Search",
-    url: "#",
-    icon: SearchIcon,
-  },
-  {
-    title: "Settings",
-    url: "#",
-    icon: SettingsIcon,
-  },
+{
+title: "Home",
+url: "#",
+icon: HomeIcon,
+},
+{
+title: "Inbox",
+url: "#",
+icon: InboxIcon,
+},
+{
+title: "Calendar",
+url: "#",
+icon: CalendarIcon,
+},
+{
+title: "Search",
+url: "#",
+icon: SearchIcon,
+},
+{
+title: "Settings",
+url: "#",
+icon: SettingsIcon,
+},
 ]
 
 export function AppSidebar() {
-  return (
-    <SidebarProvider>
-      <Sidebar>
-        <SidebarContent>
-          <SidebarGroup>
-            <SidebarGroupLabel>Application</SidebarGroupLabel>
-            <SidebarGroupContent>
-              <SidebarMenu>
-                {items.map((item) => (
-                  <SidebarMenuItem key={item.title}>
-                    <SidebarMenuButton asChild>
-                      <a href={item.url}>
-                        <item.icon />
-                        <span>{item.title}</span>
-                      </a>
-                    </SidebarMenuButton>
-                  </SidebarMenuItem>
-                ))}
-              </SidebarMenu>
-            </SidebarGroupContent>
-          </SidebarGroup>
-        </SidebarContent>
-      </Sidebar>
-      <SidebarInset>
-        <header className="flex h-12 items-center justify-between px-4">
-          <SidebarTrigger />
-        </header>
-      </SidebarInset>
-    </SidebarProvider>
-  )
+return (
+<SidebarProvider>
+<Sidebar>
+<SidebarContent>
+<SidebarGroup>
+<SidebarGroupLabel>Application</SidebarGroupLabel>
+<SidebarGroupContent>
+<SidebarMenu>
+{items.map((item) => (
+<SidebarMenuItem key={item.title}>
+<SidebarMenuButton asChild>
+<a href={item.url}>
+<item.icon />
+<span>{item.title}</span>
+</a>
+</SidebarMenuButton>
+</SidebarMenuItem>
+))}
+</SidebarMenu>
+</SidebarGroupContent>
+</SidebarGroup>
+</SidebarContent>
+</Sidebar>
+<SidebarInset>
+<header className="flex h-12 items-center justify-between px-4">
+<SidebarTrigger />
+</header>
+</SidebarInset>
+</SidebarProvider>
+)
 }
 
-```
+````
   <figcaption className="text-center text-sm text-gray-500">
     Your first sidebar.
   </figcaption>
@@ -489,7 +489,7 @@ If you have a single sidebar in your application, you can use the `SIDEBAR_WIDTH
 ```tsx showLineNumbers title="components/ui/sidebar.tsx"
 const SIDEBAR_WIDTH = "16rem"
 const SIDEBAR_WIDTH_MOBILE = "18rem"
-```
+````
 
 For multiple sidebars in your application, you can use the `style` prop to set the width of the sidebar.
 
@@ -679,59 +679,59 @@ The following example adds a `<DropdownMenu>` to the `SidebarHeader`.
 import { ChevronDownIcon } from "lucide-react"
 
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
+DropdownMenu,
+DropdownMenuContent,
+DropdownMenuItem,
+DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import {
-  Sidebar,
-  SidebarHeader,
-  SidebarInset,
-  SidebarMenu,
-  SidebarMenuButton,
-  SidebarMenuItem,
-  SidebarProvider,
-  SidebarTrigger,
+Sidebar,
+SidebarHeader,
+SidebarInset,
+SidebarMenu,
+SidebarMenuButton,
+SidebarMenuItem,
+SidebarProvider,
+SidebarTrigger,
 } from "@/components/ui/sidebar"
 
 export function AppSidebar() {
-  return (
-    <SidebarProvider>
-      <Sidebar>
-        <SidebarHeader>
-          <SidebarMenu>
-            <SidebarMenuItem>
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <SidebarMenuButton className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground">
-                    Select Workspace
-                    <ChevronDownIcon className="ml-auto" />
-                  </SidebarMenuButton>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent className="w-(--radix-popper-anchor-width)">
-                  <DropdownMenuItem>
-                    <span>Acme Inc</span>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem>
-                    <span>Acme Corp.</span>
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
-            </SidebarMenuItem>
-          </SidebarMenu>
-        </SidebarHeader>
-      </Sidebar>
-      <SidebarInset>
-        <header className="flex h-12 items-center justify-between px-4">
-          <SidebarTrigger />
-        </header>
-      </SidebarInset>
-    </SidebarProvider>
-  )
+return (
+<SidebarProvider>
+<Sidebar>
+<SidebarHeader>
+<SidebarMenu>
+<SidebarMenuItem>
+<DropdownMenu>
+<DropdownMenuTrigger asChild>
+<SidebarMenuButton className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground">
+Select Workspace
+<ChevronDownIcon className="ml-auto" />
+</SidebarMenuButton>
+</DropdownMenuTrigger>
+<DropdownMenuContent className="w-(--radix-popper-anchor-width)">
+<DropdownMenuItem>
+<span>Acme Inc</span>
+</DropdownMenuItem>
+<DropdownMenuItem>
+<span>Acme Corp.</span>
+</DropdownMenuItem>
+</DropdownMenuContent>
+</DropdownMenu>
+</SidebarMenuItem>
+</SidebarMenu>
+</SidebarHeader>
+</Sidebar>
+<SidebarInset>
+<header className="flex h-12 items-center justify-between px-4">
+<SidebarTrigger />
+</header>
+</SidebarInset>
+</SidebarProvider>
+)
 }
 
-```
+````
   <figcaption className="text-center text-sm text-gray-500">
     A sidebar header with a dropdown menu.
   </figcaption>
@@ -762,7 +762,7 @@ export function AppSidebar() {
     </SidebarMenu>
   </SidebarHeader>
 </Sidebar>
-```
+````
 
 ## SidebarFooter
 
@@ -777,69 +777,69 @@ The following example adds a `<DropdownMenu>` to the `SidebarFooter`.
 import { ChevronUpIcon } from "lucide-react"
 
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
+DropdownMenu,
+DropdownMenuContent,
+DropdownMenuItem,
+DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import {
-  Sidebar,
-  SidebarContent,
-  SidebarFooter,
-  SidebarHeader,
-  SidebarInset,
-  SidebarMenu,
-  SidebarMenuButton,
-  SidebarMenuItem,
-  SidebarProvider,
-  SidebarTrigger,
+Sidebar,
+SidebarContent,
+SidebarFooter,
+SidebarHeader,
+SidebarInset,
+SidebarMenu,
+SidebarMenuButton,
+SidebarMenuItem,
+SidebarProvider,
+SidebarTrigger,
 } from "@/components/ui/sidebar"
 
 export function AppSidebar() {
-  return (
-    <SidebarProvider>
-      <Sidebar>
-        <SidebarHeader />
-        <SidebarContent />
-        <SidebarFooter>
-          <SidebarMenu>
-            <SidebarMenuItem>
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <SidebarMenuButton className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground">
-                    Username
-                    <ChevronUpIcon className="ml-auto" />
-                  </SidebarMenuButton>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent
+return (
+<SidebarProvider>
+<Sidebar>
+<SidebarHeader />
+<SidebarContent />
+<SidebarFooter>
+<SidebarMenu>
+<SidebarMenuItem>
+<DropdownMenu>
+<DropdownMenuTrigger asChild>
+<SidebarMenuButton className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground">
+Username
+<ChevronUpIcon className="ml-auto" />
+</SidebarMenuButton>
+</DropdownMenuTrigger>
+<DropdownMenuContent
                   side="top"
                   className="w-(--radix-popper-anchor-width)"
                 >
-                  <DropdownMenuItem>
-                    <span>Account</span>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem>
-                    <span>Billing</span>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem>
-                    <span>Sign out</span>
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
-            </SidebarMenuItem>
-          </SidebarMenu>
-        </SidebarFooter>
-      </Sidebar>
-      <SidebarInset>
-        <header className="flex h-12 items-center justify-between px-4">
-          <SidebarTrigger />
-        </header>
-      </SidebarInset>
-    </SidebarProvider>
-  )
+<DropdownMenuItem>
+<span>Account</span>
+</DropdownMenuItem>
+<DropdownMenuItem>
+<span>Billing</span>
+</DropdownMenuItem>
+<DropdownMenuItem>
+<span>Sign out</span>
+</DropdownMenuItem>
+</DropdownMenuContent>
+</DropdownMenu>
+</SidebarMenuItem>
+</SidebarMenu>
+</SidebarFooter>
+</Sidebar>
+<SidebarInset>
+<header className="flex h-12 items-center justify-between px-4">
+<SidebarTrigger />
+</header>
+</SidebarInset>
+</SidebarProvider>
+)
 }
 
-```
+````
   <figcaption className="text-center text-sm text-gray-500">
     A sidebar footer with a dropdown menu.
   </figcaption>
@@ -884,7 +884,7 @@ export function AppSidebar() {
     </SidebarProvider>
   )
 }
-```
+````
 
 ## SidebarContent
 
@@ -918,48 +918,48 @@ A `SidebarGroup` has a `SidebarGroupLabel`, a `SidebarGroupContent` and an optio
 import { LifeBuoyIcon, SendIcon } from "lucide-react"
 
 import {
-  Sidebar,
-  SidebarContent,
-  SidebarGroup,
-  SidebarGroupContent,
-  SidebarGroupLabel,
-  SidebarMenu,
-  SidebarMenuButton,
-  SidebarMenuItem,
-  SidebarProvider,
+Sidebar,
+SidebarContent,
+SidebarGroup,
+SidebarGroupContent,
+SidebarGroupLabel,
+SidebarMenu,
+SidebarMenuButton,
+SidebarMenuItem,
+SidebarProvider,
 } from "@/components/ui/sidebar"
 
 export function AppSidebar() {
-  return (
-    <SidebarProvider>
-      <Sidebar>
-        <SidebarContent>
-          <SidebarGroup>
-            <SidebarGroupLabel>Help</SidebarGroupLabel>
-            <SidebarGroupContent>
-              <SidebarMenu>
-                <SidebarMenuItem>
-                  <SidebarMenuButton>
-                    <LifeBuoyIcon />
-                    Support
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-                <SidebarMenuItem>
-                  <SidebarMenuButton>
-                    <SendIcon />
-                    Feedback
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              </SidebarMenu>
-            </SidebarGroupContent>
-          </SidebarGroup>
-        </SidebarContent>
-      </Sidebar>
-    </SidebarProvider>
-  )
+return (
+<SidebarProvider>
+<Sidebar>
+<SidebarContent>
+<SidebarGroup>
+<SidebarGroupLabel>Help</SidebarGroupLabel>
+<SidebarGroupContent>
+<SidebarMenu>
+<SidebarMenuItem>
+<SidebarMenuButton>
+<LifeBuoyIcon />
+Support
+</SidebarMenuButton>
+</SidebarMenuItem>
+<SidebarMenuItem>
+<SidebarMenuButton>
+<SendIcon />
+Feedback
+</SidebarMenuButton>
+</SidebarMenuItem>
+</SidebarMenu>
+</SidebarGroupContent>
+</SidebarGroup>
+</SidebarContent>
+</Sidebar>
+</SidebarProvider>
+)
 }
 
-```
+````
   <figcaption className="text-center text-sm text-gray-500">
     A sidebar group.
   </figcaption>
@@ -983,7 +983,7 @@ export function AppSidebar() {
     </Sidebar>
   )
 }
-```
+````
 
 ## Collapsible SidebarGroup
 
@@ -996,65 +996,65 @@ To make a `SidebarGroup` collapsible, wrap it in a `Collapsible`.
 import { ChevronDownIcon, LifeBuoyIcon, SendIcon } from "lucide-react"
 
 import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
+Collapsible,
+CollapsibleContent,
+CollapsibleTrigger,
 } from "@/components/ui/collapsible"
 import {
-  Sidebar,
-  SidebarContent,
-  SidebarGroup,
-  SidebarGroupContent,
-  SidebarGroupLabel,
-  SidebarMenu,
-  SidebarMenuButton,
-  SidebarMenuItem,
-  SidebarProvider,
+Sidebar,
+SidebarContent,
+SidebarGroup,
+SidebarGroupContent,
+SidebarGroupLabel,
+SidebarMenu,
+SidebarMenuButton,
+SidebarMenuItem,
+SidebarProvider,
 } from "@/components/ui/sidebar"
 
 export function AppSidebar() {
-  return (
-    <SidebarProvider>
-      <Sidebar>
-        <SidebarContent>
-          <Collapsible defaultOpen className="group/collapsible">
-            <SidebarGroup>
-              <SidebarGroupLabel
+return (
+<SidebarProvider>
+<Sidebar>
+<SidebarContent>
+<Collapsible defaultOpen className="group/collapsible">
+<SidebarGroup>
+<SidebarGroupLabel
                 asChild
                 className="hover:bg-sidebar-accent hover:text-sidebar-accent-foreground text-sm"
               >
-                <CollapsibleTrigger>
-                  Help
-                  <ChevronDownIcon className="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-180" />
-                </CollapsibleTrigger>
-              </SidebarGroupLabel>
-              <CollapsibleContent>
-                <SidebarGroupContent>
-                  <SidebarMenu>
-                    <SidebarMenuItem>
-                      <SidebarMenuButton>
-                        <LifeBuoyIcon />
-                        Support
-                      </SidebarMenuButton>
-                    </SidebarMenuItem>
-                    <SidebarMenuItem>
-                      <SidebarMenuButton>
-                        <SendIcon />
-                        Feedback
-                      </SidebarMenuButton>
-                    </SidebarMenuItem>
-                  </SidebarMenu>
-                </SidebarGroupContent>
-              </CollapsibleContent>
-            </SidebarGroup>
-          </Collapsible>
-        </SidebarContent>
-      </Sidebar>
-    </SidebarProvider>
-  )
+<CollapsibleTrigger>
+Help
+<ChevronDownIcon className="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-180" />
+</CollapsibleTrigger>
+</SidebarGroupLabel>
+<CollapsibleContent>
+<SidebarGroupContent>
+<SidebarMenu>
+<SidebarMenuItem>
+<SidebarMenuButton>
+<LifeBuoyIcon />
+Support
+</SidebarMenuButton>
+</SidebarMenuItem>
+<SidebarMenuItem>
+<SidebarMenuButton>
+<SendIcon />
+Feedback
+</SidebarMenuButton>
+</SidebarMenuItem>
+</SidebarMenu>
+</SidebarGroupContent>
+</CollapsibleContent>
+</SidebarGroup>
+</Collapsible>
+</SidebarContent>
+</Sidebar>
+</SidebarProvider>
+)
 }
 
-```
+````
   <figcaption className="text-center text-sm text-gray-500">
     A collapsible sidebar group.
   </figcaption>
@@ -1078,7 +1078,7 @@ export function AppSidebar() {
     </Collapsible>
   )
 }
-```
+````
 
 <Callout>
   **Note:** We wrap the `CollapsibleTrigger` in a `SidebarGroupLabel` to render
@@ -1097,73 +1097,72 @@ import { FrameIcon, MapIcon, PieChartIcon, PlusIcon } from "lucide-react"
 import { toast, Toaster } from "sonner"
 
 import {
-  Sidebar,
-  SidebarContent,
-  SidebarGroup,
-  SidebarGroupAction,
-  SidebarGroupContent,
-  SidebarGroupLabel,
-  SidebarMenu,
-  SidebarMenuButton,
-  SidebarMenuItem,
-  SidebarProvider,
+Sidebar,
+SidebarContent,
+SidebarGroup,
+SidebarGroupAction,
+SidebarGroupContent,
+SidebarGroupLabel,
+SidebarMenu,
+SidebarMenuButton,
+SidebarMenuItem,
+SidebarProvider,
 } from "@/components/ui/sidebar"
 
 export function AppSidebar() {
-  return (
-    <SidebarProvider>
-      <Toaster
-        position="bottom-left"
-        toastOptions={{
+return (
+<SidebarProvider>
+<Toaster
+position="bottom-left"
+toastOptions={{
           className: "ml-[160px]",
         }}
-      />
-      <Sidebar>
-        <SidebarContent>
-          <SidebarGroup>
-            <SidebarGroupLabel>Projects</SidebarGroupLabel>
-            <SidebarGroupAction
-              title="Add Project"
-              onClick={() => toast("You clicked the group action!")}
-            >
-              <PlusIcon /> <span className="sr-only">Add Project</span>
-            </SidebarGroupAction>
-            <SidebarGroupContent>
-              <SidebarMenu>
-                <SidebarMenuItem>
-                  <SidebarMenuButton asChild>
-                    <a href="#">
-                      <FrameIcon />
-                      <span>Design Engineering</span>
-                    </a>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-                <SidebarMenuItem>
-                  <SidebarMenuButton asChild>
-                    <a href="#">
-                      <PieChartIcon />
-                      <span>Sales & Marketing</span>
-                    </a>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-                <SidebarMenuItem>
-                  <SidebarMenuButton asChild>
-                    <a href="#">
-                      <MapIcon />
-                      <span>Travel</span>
-                    </a>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              </SidebarMenu>
-            </SidebarGroupContent>
-          </SidebarGroup>
-        </SidebarContent>
-      </Sidebar>
-    </SidebarProvider>
-  )
+/>
+<Sidebar>
+<SidebarContent>
+<SidebarGroup>
+<SidebarGroupLabel>Projects</SidebarGroupLabel>
+<SidebarGroupAction
+title="Add Project"
+onClick={() => toast("You clicked the group action!")} >
+<PlusIcon /> <span className="sr-only">Add Project</span>
+</SidebarGroupAction>
+<SidebarGroupContent>
+<SidebarMenu>
+<SidebarMenuItem>
+<SidebarMenuButton asChild>
+<a href="#">
+<FrameIcon />
+<span>Design Engineering</span>
+</a>
+</SidebarMenuButton>
+</SidebarMenuItem>
+<SidebarMenuItem>
+<SidebarMenuButton asChild>
+<a href="#">
+<PieChartIcon />
+<span>Sales & Marketing</span>
+</a>
+</SidebarMenuButton>
+</SidebarMenuItem>
+<SidebarMenuItem>
+<SidebarMenuButton asChild>
+<a href="#">
+<MapIcon />
+<span>Travel</span>
+</a>
+</SidebarMenuButton>
+</SidebarMenuItem>
+</SidebarMenu>
+</SidebarGroupContent>
+</SidebarGroup>
+</SidebarContent>
+</Sidebar>
+</SidebarProvider>
+)
 }
 
-```
+````
   <figcaption className="text-center text-sm text-gray-500">
     A sidebar group with an action button.
   </figcaption>
@@ -1181,7 +1180,7 @@ export function AppSidebar() {
     </SidebarGroup>
   )
 }
-```
+````
 
 ## SidebarMenu
 
@@ -1211,82 +1210,82 @@ Here's an example of a `SidebarMenu` component rendering a list of projects.
 "use client"
 
 import {
-  FrameIcon,
-  LifeBuoyIcon,
-  MapIcon,
-  PieChartIcon,
-  SendIcon,
+FrameIcon,
+LifeBuoyIcon,
+MapIcon,
+PieChartIcon,
+SendIcon,
 } from "lucide-react"
 
 import {
-  Sidebar,
-  SidebarContent,
-  SidebarGroup,
-  SidebarGroupContent,
-  SidebarGroupLabel,
-  SidebarMenu,
-  SidebarMenuButton,
-  SidebarMenuItem,
-  SidebarProvider,
+Sidebar,
+SidebarContent,
+SidebarGroup,
+SidebarGroupContent,
+SidebarGroupLabel,
+SidebarMenu,
+SidebarMenuButton,
+SidebarMenuItem,
+SidebarProvider,
 } from "@/components/ui/sidebar"
 
 const projects = [
-  {
-    name: "Design Engineering",
-    url: "#",
-    icon: FrameIcon,
-  },
-  {
-    name: "Sales & Marketing",
-    url: "#",
-    icon: PieChartIcon,
-  },
-  {
-    name: "Travel",
-    url: "#",
-    icon: MapIcon,
-  },
-  {
-    name: "Support",
-    url: "#",
-    icon: LifeBuoyIcon,
-  },
-  {
-    name: "Feedback",
-    url: "#",
-    icon: SendIcon,
-  },
+{
+name: "Design Engineering",
+url: "#",
+icon: FrameIcon,
+},
+{
+name: "Sales & Marketing",
+url: "#",
+icon: PieChartIcon,
+},
+{
+name: "Travel",
+url: "#",
+icon: MapIcon,
+},
+{
+name: "Support",
+url: "#",
+icon: LifeBuoyIcon,
+},
+{
+name: "Feedback",
+url: "#",
+icon: SendIcon,
+},
 ]
 
 export function AppSidebar() {
-  return (
-    <SidebarProvider>
-      <Sidebar>
-        <SidebarContent>
-          <SidebarGroup>
-            <SidebarGroupLabel>Projects</SidebarGroupLabel>
-            <SidebarGroupContent>
-              <SidebarMenu>
-                {projects.map((project) => (
-                  <SidebarMenuItem key={project.name}>
-                    <SidebarMenuButton asChild>
-                      <a href={project.url}>
-                        <project.icon />
-                        <span>{project.name}</span>
-                      </a>
-                    </SidebarMenuButton>
-                  </SidebarMenuItem>
-                ))}
-              </SidebarMenu>
-            </SidebarGroupContent>
-          </SidebarGroup>
-        </SidebarContent>
-      </Sidebar>
-    </SidebarProvider>
-  )
+return (
+<SidebarProvider>
+<Sidebar>
+<SidebarContent>
+<SidebarGroup>
+<SidebarGroupLabel>Projects</SidebarGroupLabel>
+<SidebarGroupContent>
+<SidebarMenu>
+{projects.map((project) => (
+<SidebarMenuItem key={project.name}>
+<SidebarMenuButton asChild>
+<a href={project.url}>
+<project.icon />
+<span>{project.name}</span>
+</a>
+</SidebarMenuButton>
+</SidebarMenuItem>
+))}
+</SidebarMenu>
+</SidebarGroupContent>
+</SidebarGroup>
+</SidebarContent>
+</Sidebar>
+</SidebarProvider>
+)
 }
 
-```
+````
   <figcaption className="text-center text-sm text-gray-500">
     A sidebar menu with a list of projects.
   </figcaption>
@@ -1314,7 +1313,7 @@ export function AppSidebar() {
     </SidebarGroup>
   </SidebarContent>
 </Sidebar>
-```
+````
 
 ## SidebarMenuButton
 
@@ -1382,109 +1381,109 @@ Here's an example of a `SidebarMenuAction` component rendering a `DropdownMenu`.
 "use client"
 
 import {
-  FrameIcon,
-  LifeBuoyIcon,
-  MapIcon,
-  MoreHorizontalIcon,
-  PieChartIcon,
-  SendIcon,
+FrameIcon,
+LifeBuoyIcon,
+MapIcon,
+MoreHorizontalIcon,
+PieChartIcon,
+SendIcon,
 } from "lucide-react"
 
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
+DropdownMenu,
+DropdownMenuContent,
+DropdownMenuItem,
+DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import {
-  Sidebar,
-  SidebarContent,
-  SidebarGroup,
-  SidebarGroupContent,
-  SidebarGroupLabel,
-  SidebarMenu,
-  SidebarMenuAction,
-  SidebarMenuButton,
-  SidebarMenuItem,
-  SidebarProvider,
+Sidebar,
+SidebarContent,
+SidebarGroup,
+SidebarGroupContent,
+SidebarGroupLabel,
+SidebarMenu,
+SidebarMenuAction,
+SidebarMenuButton,
+SidebarMenuItem,
+SidebarProvider,
 } from "@/components/ui/sidebar"
 
 const projects = [
-  {
-    name: "Design Engineering",
-    url: "#",
-    icon: FrameIcon,
-  },
-  {
-    name: "Sales & Marketing",
-    url: "#",
-    icon: PieChartIcon,
-  },
-  {
-    name: "Travel",
-    url: "#",
-    icon: MapIcon,
-  },
-  {
-    name: "Support",
-    url: "#",
-    icon: LifeBuoyIcon,
-  },
-  {
-    name: "Feedback",
-    url: "#",
-    icon: SendIcon,
-  },
+{
+name: "Design Engineering",
+url: "#",
+icon: FrameIcon,
+},
+{
+name: "Sales & Marketing",
+url: "#",
+icon: PieChartIcon,
+},
+{
+name: "Travel",
+url: "#",
+icon: MapIcon,
+},
+{
+name: "Support",
+url: "#",
+icon: LifeBuoyIcon,
+},
+{
+name: "Feedback",
+url: "#",
+icon: SendIcon,
+},
 ]
 
 export function AppSidebar() {
-  return (
-    <SidebarProvider>
-      <Sidebar>
-        <SidebarContent>
-          <SidebarGroup>
-            <SidebarGroupLabel>Projects</SidebarGroupLabel>
-            <SidebarGroupContent>
-              <SidebarMenu>
-                {projects.map((project) => (
-                  <SidebarMenuItem key={project.name}>
-                    <SidebarMenuButton
+return (
+<SidebarProvider>
+<Sidebar>
+<SidebarContent>
+<SidebarGroup>
+<SidebarGroupLabel>Projects</SidebarGroupLabel>
+<SidebarGroupContent>
+<SidebarMenu>
+{projects.map((project) => (
+<SidebarMenuItem key={project.name}>
+<SidebarMenuButton
                       asChild
                       className="group-has-[[data-state=open]]/menu-item:bg-sidebar-accent"
                     >
-                      <a href={project.url}>
-                        <project.icon />
-                        <span>{project.name}</span>
-                      </a>
-                    </SidebarMenuButton>
-                    <DropdownMenu>
-                      <DropdownMenuTrigger asChild>
-                        <SidebarMenuAction>
-                          <MoreHorizontalIcon />
-                          <span className="sr-only">More</span>
-                        </SidebarMenuAction>
-                      </DropdownMenuTrigger>
-                      <DropdownMenuContent side="right" align="start">
-                        <DropdownMenuItem>
-                          <span>Edit Project</span>
-                        </DropdownMenuItem>
-                        <DropdownMenuItem>
-                          <span>Delete Project</span>
-                        </DropdownMenuItem>
-                      </DropdownMenuContent>
-                    </DropdownMenu>
-                  </SidebarMenuItem>
-                ))}
-              </SidebarMenu>
-            </SidebarGroupContent>
-          </SidebarGroup>
-        </SidebarContent>
-      </Sidebar>
-    </SidebarProvider>
-  )
+<a href={project.url}>
+<project.icon />
+<span>{project.name}</span>
+</a>
+</SidebarMenuButton>
+<DropdownMenu>
+<DropdownMenuTrigger asChild>
+<SidebarMenuAction>
+<MoreHorizontalIcon />
+<span className="sr-only">More</span>
+</SidebarMenuAction>
+</DropdownMenuTrigger>
+<DropdownMenuContent side="right" align="start">
+<DropdownMenuItem>
+<span>Edit Project</span>
+</DropdownMenuItem>
+<DropdownMenuItem>
+<span>Delete Project</span>
+</DropdownMenuItem>
+</DropdownMenuContent>
+</DropdownMenu>
+</SidebarMenuItem>
+))}
+</SidebarMenu>
+</SidebarGroupContent>
+</SidebarGroup>
+</SidebarContent>
+</Sidebar>
+</SidebarProvider>
+)
 }
 
-```
+````
   <figcaption className="text-center text-sm text-gray-500">
     A sidebar menu action with a dropdown menu.
   </figcaption>
@@ -1514,7 +1513,7 @@ export function AppSidebar() {
     </DropdownMenuContent>
   </DropdownMenu>
 </SidebarMenuItem>
-```
+````
 
 ## SidebarMenuSub
 
@@ -1527,185 +1526,185 @@ Use `<SidebarMenuSubItem />` and `<SidebarMenuSubButton />` to render a submenu 
 "use client"
 
 import {
-  Sidebar,
-  SidebarContent,
-  SidebarGroup,
-  SidebarGroupContent,
-  SidebarMenu,
-  SidebarMenuButton,
-  SidebarMenuItem,
-  SidebarMenuSub,
-  SidebarMenuSubButton,
-  SidebarMenuSubItem,
-  SidebarProvider,
+Sidebar,
+SidebarContent,
+SidebarGroup,
+SidebarGroupContent,
+SidebarMenu,
+SidebarMenuButton,
+SidebarMenuItem,
+SidebarMenuSub,
+SidebarMenuSubButton,
+SidebarMenuSubItem,
+SidebarProvider,
 } from "@/components/ui/sidebar"
 
 const items = [
-  {
-    title: "Getting Started",
-    url: "#",
-    items: [
-      {
-        title: "Installation",
-        url: "#",
-      },
-      {
-        title: "Project Structure",
-        url: "#",
-      },
-    ],
-  },
-  {
-    title: "Building Your Application",
-    url: "#",
-    items: [
-      {
-        title: "Routing",
-        url: "#",
-      },
-      {
-        title: "Data Fetching",
-        url: "#",
-        isActive: true,
-      },
-      {
-        title: "Rendering",
-        url: "#",
-      },
-      {
-        title: "Caching",
-        url: "#",
-      },
-      {
-        title: "Styling",
-        url: "#",
-      },
-      {
-        title: "Optimizing",
-        url: "#",
-      },
-      {
-        title: "Configuring",
-        url: "#",
-      },
-      {
-        title: "Testing",
-        url: "#",
-      },
-      {
-        title: "Authentication",
-        url: "#",
-      },
-      {
-        title: "Deploying",
-        url: "#",
-      },
-      {
-        title: "Upgrading",
-        url: "#",
-      },
-      {
-        title: "Examples",
-        url: "#",
-      },
-    ],
-  },
-  {
-    title: "API Reference",
-    url: "#",
-    items: [
-      {
-        title: "Components",
-        url: "#",
-      },
-      {
-        title: "File Conventions",
-        url: "#",
-      },
-      {
-        title: "Functions",
-        url: "#",
-      },
-      {
-        title: "next.config.js Options",
-        url: "#",
-      },
-      {
-        title: "CLI",
-        url: "#",
-      },
-      {
-        title: "Edge Runtime",
-        url: "#",
-      },
-    ],
-  },
-  {
-    title: "Architecture",
-    url: "#",
-    items: [
-      {
-        title: "Accessibility",
-        url: "#",
-      },
-      {
-        title: "Fast Refresh",
-        url: "#",
-      },
-      {
-        title: "Next.js Compiler",
-        url: "#",
-      },
-      {
-        title: "Supported Browsers",
-        url: "#",
-      },
-      {
-        title: "Turbopack",
-        url: "#",
-      },
-    ],
-  },
+{
+title: "Getting Started",
+url: "#",
+items: [
+{
+title: "Installation",
+url: "#",
+},
+{
+title: "Project Structure",
+url: "#",
+},
+],
+},
+{
+title: "Building Your Application",
+url: "#",
+items: [
+{
+title: "Routing",
+url: "#",
+},
+{
+title: "Data Fetching",
+url: "#",
+isActive: true,
+},
+{
+title: "Rendering",
+url: "#",
+},
+{
+title: "Caching",
+url: "#",
+},
+{
+title: "Styling",
+url: "#",
+},
+{
+title: "Optimizing",
+url: "#",
+},
+{
+title: "Configuring",
+url: "#",
+},
+{
+title: "Testing",
+url: "#",
+},
+{
+title: "Authentication",
+url: "#",
+},
+{
+title: "Deploying",
+url: "#",
+},
+{
+title: "Upgrading",
+url: "#",
+},
+{
+title: "Examples",
+url: "#",
+},
+],
+},
+{
+title: "API Reference",
+url: "#",
+items: [
+{
+title: "Components",
+url: "#",
+},
+{
+title: "File Conventions",
+url: "#",
+},
+{
+title: "Functions",
+url: "#",
+},
+{
+title: "next.config.js Options",
+url: "#",
+},
+{
+title: "CLI",
+url: "#",
+},
+{
+title: "Edge Runtime",
+url: "#",
+},
+],
+},
+{
+title: "Architecture",
+url: "#",
+items: [
+{
+title: "Accessibility",
+url: "#",
+},
+{
+title: "Fast Refresh",
+url: "#",
+},
+{
+title: "Next.js Compiler",
+url: "#",
+},
+{
+title: "Supported Browsers",
+url: "#",
+},
+{
+title: "Turbopack",
+url: "#",
+},
+],
+},
 ]
 
 export function AppSidebar() {
-  return (
-    <SidebarProvider>
-      <Sidebar>
-        <SidebarContent>
-          <SidebarGroup>
-            <SidebarGroupContent>
-              <SidebarMenu>
-                {items.map((item, index) => (
-                  <SidebarMenuItem key={index}>
-                    <SidebarMenuButton asChild>
-                      <a href={item.url}>
-                        <span>{item.title}</span>
-                      </a>
-                    </SidebarMenuButton>
-                    <SidebarMenuSub>
-                      {item.items.map((subItem, subIndex) => (
-                        <SidebarMenuSubItem key={subIndex}>
-                          <SidebarMenuSubButton asChild>
-                            <a href={subItem.url}>
-                              <span>{subItem.title}</span>
-                            </a>
-                          </SidebarMenuSubButton>
-                        </SidebarMenuSubItem>
-                      ))}
-                    </SidebarMenuSub>
-                  </SidebarMenuItem>
-                ))}
-              </SidebarMenu>
-            </SidebarGroupContent>
-          </SidebarGroup>
-        </SidebarContent>
-      </Sidebar>
-    </SidebarProvider>
-  )
+return (
+<SidebarProvider>
+<Sidebar>
+<SidebarContent>
+<SidebarGroup>
+<SidebarGroupContent>
+<SidebarMenu>
+{items.map((item, index) => (
+<SidebarMenuItem key={index}>
+<SidebarMenuButton asChild>
+<a href={item.url}>
+<span>{item.title}</span>
+</a>
+</SidebarMenuButton>
+<SidebarMenuSub>
+{item.items.map((subItem, subIndex) => (
+<SidebarMenuSubItem key={subIndex}>
+<SidebarMenuSubButton asChild>
+<a href={subItem.url}>
+<span>{subItem.title}</span>
+</a>
+</SidebarMenuSubButton>
+</SidebarMenuSubItem>
+))}
+</SidebarMenuSub>
+</SidebarMenuItem>
+))}
+</SidebarMenu>
+</SidebarGroupContent>
+</SidebarGroup>
+</SidebarContent>
+</Sidebar>
+</SidebarProvider>
+)
 }
 
-```
+````
   <figcaption className="text-center text-sm text-gray-500">
     A sidebar menu with a submenu.
   </figcaption>
@@ -1723,7 +1722,7 @@ export function AppSidebar() {
     </SidebarMenuSubItem>
   </SidebarMenuSub>
 </SidebarMenuItem>
-```
+````
 
 ## Collapsible SidebarMenu
 
@@ -1736,199 +1735,198 @@ To make a `SidebarMenu` component collapsible, wrap it and the `SidebarMenuSub` 
 import { ChevronRightIcon } from "lucide-react"
 
 import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
+Collapsible,
+CollapsibleContent,
+CollapsibleTrigger,
 } from "@/components/ui/collapsible"
 import {
-  Sidebar,
-  SidebarContent,
-  SidebarGroup,
-  SidebarGroupContent,
-  SidebarMenu,
-  SidebarMenuButton,
-  SidebarMenuItem,
-  SidebarMenuSub,
-  SidebarMenuSubButton,
-  SidebarMenuSubItem,
-  SidebarProvider,
+Sidebar,
+SidebarContent,
+SidebarGroup,
+SidebarGroupContent,
+SidebarMenu,
+SidebarMenuButton,
+SidebarMenuItem,
+SidebarMenuSub,
+SidebarMenuSubButton,
+SidebarMenuSubItem,
+SidebarProvider,
 } from "@/components/ui/sidebar"
 
 const items = [
-  {
-    title: "Getting Started",
-    url: "#",
-    items: [
-      {
-        title: "Installation",
-        url: "#",
-      },
-      {
-        title: "Project Structure",
-        url: "#",
-      },
-    ],
-  },
-  {
-    title: "Building Your Application",
-    url: "#",
-    items: [
-      {
-        title: "Routing",
-        url: "#",
-      },
-      {
-        title: "Data Fetching",
-        url: "#",
-        isActive: true,
-      },
-      {
-        title: "Rendering",
-        url: "#",
-      },
-      {
-        title: "Caching",
-        url: "#",
-      },
-      {
-        title: "Styling",
-        url: "#",
-      },
-      {
-        title: "Optimizing",
-        url: "#",
-      },
-      {
-        title: "Configuring",
-        url: "#",
-      },
-      {
-        title: "Testing",
-        url: "#",
-      },
-      {
-        title: "Authentication",
-        url: "#",
-      },
-      {
-        title: "Deploying",
-        url: "#",
-      },
-      {
-        title: "Upgrading",
-        url: "#",
-      },
-      {
-        title: "Examples",
-        url: "#",
-      },
-    ],
-  },
-  {
-    title: "API Reference",
-    url: "#",
-    items: [
-      {
-        title: "Components",
-        url: "#",
-      },
-      {
-        title: "File Conventions",
-        url: "#",
-      },
-      {
-        title: "Functions",
-        url: "#",
-      },
-      {
-        title: "next.config.js Options",
-        url: "#",
-      },
-      {
-        title: "CLI",
-        url: "#",
-      },
-      {
-        title: "Edge Runtime",
-        url: "#",
-      },
-    ],
-  },
-  {
-    title: "Architecture",
-    url: "#",
-    items: [
-      {
-        title: "Accessibility",
-        url: "#",
-      },
-      {
-        title: "Fast Refresh",
-        url: "#",
-      },
-      {
-        title: "Next.js Compiler",
-        url: "#",
-      },
-      {
-        title: "Supported Browsers",
-        url: "#",
-      },
-      {
-        title: "Turbopack",
-        url: "#",
-      },
-    ],
-  },
+{
+title: "Getting Started",
+url: "#",
+items: [
+{
+title: "Installation",
+url: "#",
+},
+{
+title: "Project Structure",
+url: "#",
+},
+],
+},
+{
+title: "Building Your Application",
+url: "#",
+items: [
+{
+title: "Routing",
+url: "#",
+},
+{
+title: "Data Fetching",
+url: "#",
+isActive: true,
+},
+{
+title: "Rendering",
+url: "#",
+},
+{
+title: "Caching",
+url: "#",
+},
+{
+title: "Styling",
+url: "#",
+},
+{
+title: "Optimizing",
+url: "#",
+},
+{
+title: "Configuring",
+url: "#",
+},
+{
+title: "Testing",
+url: "#",
+},
+{
+title: "Authentication",
+url: "#",
+},
+{
+title: "Deploying",
+url: "#",
+},
+{
+title: "Upgrading",
+url: "#",
+},
+{
+title: "Examples",
+url: "#",
+},
+],
+},
+{
+title: "API Reference",
+url: "#",
+items: [
+{
+title: "Components",
+url: "#",
+},
+{
+title: "File Conventions",
+url: "#",
+},
+{
+title: "Functions",
+url: "#",
+},
+{
+title: "next.config.js Options",
+url: "#",
+},
+{
+title: "CLI",
+url: "#",
+},
+{
+title: "Edge Runtime",
+url: "#",
+},
+],
+},
+{
+title: "Architecture",
+url: "#",
+items: [
+{
+title: "Accessibility",
+url: "#",
+},
+{
+title: "Fast Refresh",
+url: "#",
+},
+{
+title: "Next.js Compiler",
+url: "#",
+},
+{
+title: "Supported Browsers",
+url: "#",
+},
+{
+title: "Turbopack",
+url: "#",
+},
+],
+},
 ]
 
 export function AppSidebar() {
-  return (
-    <SidebarProvider>
-      <Sidebar>
-        <SidebarContent>
-          <SidebarGroup>
-            <SidebarGroupContent>
-              <SidebarMenu>
-                {items.map((item, index) => (
-                  <Collapsible
-                    key={index}
-                    className="group/collapsible"
-                    defaultOpen={index === 0}
-                  >
-                    <SidebarMenuItem>
-                      <CollapsibleTrigger asChild>
-                        <SidebarMenuButton>
-                          <span>{item.title}</span>
-                          <ChevronRightIcon className="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-90" />
-                        </SidebarMenuButton>
-                      </CollapsibleTrigger>
-                      <CollapsibleContent>
-                        <SidebarMenuSub>
-                          {item.items.map((subItem, subIndex) => (
-                            <SidebarMenuSubItem key={subIndex}>
-                              <SidebarMenuSubButton asChild>
-                                <a href={subItem.url}>
-                                  <span>{subItem.title}</span>
-                                </a>
-                              </SidebarMenuSubButton>
-                            </SidebarMenuSubItem>
-                          ))}
-                        </SidebarMenuSub>
-                      </CollapsibleContent>
-                    </SidebarMenuItem>
-                  </Collapsible>
-                ))}
-              </SidebarMenu>
-            </SidebarGroupContent>
-          </SidebarGroup>
-        </SidebarContent>
-      </Sidebar>
-    </SidebarProvider>
-  )
+return (
+<SidebarProvider>
+<Sidebar>
+<SidebarContent>
+<SidebarGroup>
+<SidebarGroupContent>
+<SidebarMenu>
+{items.map((item, index) => (
+<Collapsible
+key={index}
+className="group/collapsible"
+defaultOpen={index === 0} >
+<SidebarMenuItem>
+<CollapsibleTrigger asChild>
+<SidebarMenuButton>
+<span>{item.title}</span>
+<ChevronRightIcon className="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-90" />
+</SidebarMenuButton>
+</CollapsibleTrigger>
+<CollapsibleContent>
+<SidebarMenuSub>
+{item.items.map((subItem, subIndex) => (
+<SidebarMenuSubItem key={subIndex}>
+<SidebarMenuSubButton asChild>
+<a href={subItem.url}>
+<span>{subItem.title}</span>
+</a>
+</SidebarMenuSubButton>
+</SidebarMenuSubItem>
+))}
+</SidebarMenuSub>
+</CollapsibleContent>
+</SidebarMenuItem>
+</Collapsible>
+))}
+</SidebarMenu>
+</SidebarGroupContent>
+</SidebarGroup>
+</SidebarContent>
+</Sidebar>
+</SidebarProvider>
+)
 }
 
-```
+````
   <figcaption className="text-center text-sm text-gray-500">
     A collapsible sidebar menu.
   </figcaption>
@@ -1949,7 +1947,7 @@ export function AppSidebar() {
     </SidebarMenuItem>
   </Collapsible>
 </SidebarMenu>
-```
+````
 
 ## SidebarMenuBadge
 
@@ -1960,92 +1958,92 @@ The `SidebarMenuBadge` component is used to render a badge within a `SidebarMenu
 "use client"
 
 import {
-  FrameIcon,
-  LifeBuoyIcon,
-  MapIcon,
-  PieChartIcon,
-  SendIcon,
+FrameIcon,
+LifeBuoyIcon,
+MapIcon,
+PieChartIcon,
+SendIcon,
 } from "lucide-react"
 
 import {
-  Sidebar,
-  SidebarContent,
-  SidebarGroup,
-  SidebarGroupContent,
-  SidebarGroupLabel,
-  SidebarMenu,
-  SidebarMenuBadge,
-  SidebarMenuButton,
-  SidebarMenuItem,
-  SidebarProvider,
+Sidebar,
+SidebarContent,
+SidebarGroup,
+SidebarGroupContent,
+SidebarGroupLabel,
+SidebarMenu,
+SidebarMenuBadge,
+SidebarMenuButton,
+SidebarMenuItem,
+SidebarProvider,
 } from "@/components/ui/sidebar"
 
 const projects = [
-  {
-    name: "Design Engineering",
-    url: "#",
-    icon: FrameIcon,
-    badge: "24",
-  },
-  {
-    name: "Sales & Marketing",
-    url: "#",
-    icon: PieChartIcon,
-    badge: "12",
-  },
-  {
-    name: "Travel",
-    url: "#",
-    icon: MapIcon,
-    badge: "3",
-  },
-  {
-    name: "Support",
-    url: "#",
-    icon: LifeBuoyIcon,
-    badge: "21",
-  },
-  {
-    name: "Feedback",
-    url: "#",
-    icon: SendIcon,
-    badge: "8",
-  },
+{
+name: "Design Engineering",
+url: "#",
+icon: FrameIcon,
+badge: "24",
+},
+{
+name: "Sales & Marketing",
+url: "#",
+icon: PieChartIcon,
+badge: "12",
+},
+{
+name: "Travel",
+url: "#",
+icon: MapIcon,
+badge: "3",
+},
+{
+name: "Support",
+url: "#",
+icon: LifeBuoyIcon,
+badge: "21",
+},
+{
+name: "Feedback",
+url: "#",
+icon: SendIcon,
+badge: "8",
+},
 ]
 
 export function AppSidebar() {
-  return (
-    <SidebarProvider>
-      <Sidebar>
-        <SidebarContent>
-          <SidebarGroup>
-            <SidebarGroupLabel>Projects</SidebarGroupLabel>
-            <SidebarGroupContent>
-              <SidebarMenu>
-                {projects.map((project) => (
-                  <SidebarMenuItem key={project.name}>
-                    <SidebarMenuButton
+return (
+<SidebarProvider>
+<Sidebar>
+<SidebarContent>
+<SidebarGroup>
+<SidebarGroupLabel>Projects</SidebarGroupLabel>
+<SidebarGroupContent>
+<SidebarMenu>
+{projects.map((project) => (
+<SidebarMenuItem key={project.name}>
+<SidebarMenuButton
                       asChild
                       className="group-has-[[data-state=open]]/menu-item:bg-sidebar-accent"
                     >
-                      <a href={project.url}>
-                        <project.icon />
-                        <span>{project.name}</span>
-                      </a>
-                    </SidebarMenuButton>
-                    <SidebarMenuBadge>{project.badge}</SidebarMenuBadge>
-                  </SidebarMenuItem>
-                ))}
-              </SidebarMenu>
-            </SidebarGroupContent>
-          </SidebarGroup>
-        </SidebarContent>
-      </Sidebar>
-    </SidebarProvider>
-  )
+<a href={project.url}>
+<project.icon />
+<span>{project.name}</span>
+</a>
+</SidebarMenuButton>
+<SidebarMenuBadge>{project.badge}</SidebarMenuBadge>
+</SidebarMenuItem>
+))}
+</SidebarMenu>
+</SidebarGroupContent>
+</SidebarGroup>
+</SidebarContent>
+</Sidebar>
+</SidebarProvider>
+)
 }
 
-```
+````
   <figcaption className="text-center text-sm text-gray-500">
     A sidebar menu with a badge.
   </figcaption>
@@ -2056,7 +2054,7 @@ export function AppSidebar() {
   <SidebarMenuButton />
   <SidebarMenuBadge>24</SidebarMenuBadge>
 </SidebarMenuItem>
-```
+````
 
 ## SidebarMenuSkeleton
 
@@ -2154,108 +2152,108 @@ import {
 } from "lucide-react"
 
 import {
-  Sidebar,
-  SidebarContent,
-  SidebarGroup,
-  SidebarGroupContent,
-  SidebarGroupLabel,
-  SidebarMenu,
-  SidebarMenuButton,
-  SidebarMenuItem,
-  SidebarMenuSkeleton,
-  SidebarProvider,
+Sidebar,
+SidebarContent,
+SidebarGroup,
+SidebarGroupContent,
+SidebarGroupLabel,
+SidebarMenu,
+SidebarMenuButton,
+SidebarMenuItem,
+SidebarMenuSkeleton,
+SidebarProvider,
 } from "@/components/ui/sidebar"
 
 const projects = [
-  {
-    name: "Design Engineering",
-    url: "#",
-    icon: FrameIcon,
-    badge: "24",
-  },
-  {
-    name: "Sales & Marketing",
-    url: "#",
-    icon: PieChartIcon,
-    badge: "12",
-  },
-  {
-    name: "Travel",
-    url: "#",
-    icon: MapIcon,
-    badge: "3",
-  },
-  {
-    name: "Support",
-    url: "#",
-    icon: LifeBuoyIcon,
-    badge: "21",
-  },
-  {
-    name: "Feedback",
-    url: "#",
-    icon: SendIcon,
-    badge: "8",
-  },
+{
+name: "Design Engineering",
+url: "#",
+icon: FrameIcon,
+badge: "24",
+},
+{
+name: "Sales & Marketing",
+url: "#",
+icon: PieChartIcon,
+badge: "12",
+},
+{
+name: "Travel",
+url: "#",
+icon: MapIcon,
+badge: "3",
+},
+{
+name: "Support",
+url: "#",
+icon: LifeBuoyIcon,
+badge: "21",
+},
+{
+name: "Feedback",
+url: "#",
+icon: SendIcon,
+badge: "8",
+},
 ]
 
 // Dummy fetch function
 async function fetchProjects() {
-  await new Promise((resolve) => setTimeout(resolve, 3000))
-  return projects
+await new Promise((resolve) => setTimeout(resolve, 3000))
+return projects
 }
 
 export function AppSidebar() {
-  return (
-    <SidebarProvider>
-      <Sidebar>
-        <SidebarContent>
-          <SidebarGroup>
-            <SidebarGroupLabel>Projects</SidebarGroupLabel>
-            <SidebarGroupContent>
-              <React.Suspense fallback={<NavProjectsSkeleton />}>
-                <NavProjects />
-              </React.Suspense>
-            </SidebarGroupContent>
-          </SidebarGroup>
-        </SidebarContent>
-      </Sidebar>
-    </SidebarProvider>
-  )
+return (
+<SidebarProvider>
+<Sidebar>
+<SidebarContent>
+<SidebarGroup>
+<SidebarGroupLabel>Projects</SidebarGroupLabel>
+<SidebarGroupContent>
+<React.Suspense fallback={<NavProjectsSkeleton />}>
+<NavProjects />
+</React.Suspense>
+</SidebarGroupContent>
+</SidebarGroup>
+</SidebarContent>
+</Sidebar>
+</SidebarProvider>
+)
 }
 
 function NavProjectsSkeleton() {
-  return (
-    <SidebarMenu>
-      {Array.from({ length: 5 }).map((_, index) => (
-        <SidebarMenuItem key={index}>
-          <SidebarMenuSkeleton showIcon />
-        </SidebarMenuItem>
-      ))}
-    </SidebarMenu>
-  )
+return (
+<SidebarMenu>
+{Array.from({ length: 5 }).map((\_, index) => (
+<SidebarMenuItem key={index}>
+<SidebarMenuSkeleton showIcon />
+</SidebarMenuItem>
+))}
+</SidebarMenu>
+)
 }
 
 async function NavProjects() {
-  const projects = await fetchProjects()
+const projects = await fetchProjects()
 
-  return (
-    <SidebarMenu>
-      {projects.map((project) => (
-        <SidebarMenuItem key={project.name}>
-          <SidebarMenuButton asChild>
-            <a href={project.url}>
-              <project.icon />
-              <span>{project.name}</span>
-            </a>
-          </SidebarMenuButton>
-        </SidebarMenuItem>
-      ))}
-    </SidebarMenu>
-  )
+return (
+<SidebarMenu>
+{projects.map((project) => (
+<SidebarMenuItem key={project.name}>
+<SidebarMenuButton asChild>
+<a href={project.url}>
+<project.icon />
+<span>{project.name}</span>
+</a>
+</SidebarMenuButton>
+</SidebarMenuItem>
+))}
+</SidebarMenu>
+)
 }
 
-```
+````
   <figcaption className="text-center text-sm text-gray-500">
     A sidebar menu using React Server Components.
   </figcaption>
@@ -2273,7 +2271,7 @@ function NavProjectsSkeleton() {
     </SidebarMenu>
   )
 }
-```
+````
 
 ```tsx showLineNumbers {2} title="Server component fetching data."
 async function NavProjects() {
@@ -2401,102 +2399,101 @@ Use the `open` and `onOpenChange` props to control the sidebar.
   ```tsx
 "use client"
 
-import * as React from "react"
+import \* as React from "react"
 import {
-  FrameIcon,
-  LifeBuoyIcon,
-  MapIcon,
-  PanelLeftCloseIcon,
-  PanelLeftOpenIcon,
-  PieChartIcon,
-  SendIcon,
+FrameIcon,
+LifeBuoyIcon,
+MapIcon,
+PanelLeftCloseIcon,
+PanelLeftOpenIcon,
+PieChartIcon,
+SendIcon,
 } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import {
-  Sidebar,
-  SidebarContent,
-  SidebarGroup,
-  SidebarGroupContent,
-  SidebarGroupLabel,
-  SidebarInset,
-  SidebarMenu,
-  SidebarMenuButton,
-  SidebarMenuItem,
-  SidebarProvider,
+Sidebar,
+SidebarContent,
+SidebarGroup,
+SidebarGroupContent,
+SidebarGroupLabel,
+SidebarInset,
+SidebarMenu,
+SidebarMenuButton,
+SidebarMenuItem,
+SidebarProvider,
 } from "@/components/ui/sidebar"
 
 const projects = [
-  {
-    name: "Design Engineering",
-    url: "#",
-    icon: FrameIcon,
-  },
-  {
-    name: "Sales & Marketing",
-    url: "#",
-    icon: PieChartIcon,
-  },
-  {
-    name: "Travel",
-    url: "#",
-    icon: MapIcon,
-  },
-  {
-    name: "Support",
-    url: "#",
-    icon: LifeBuoyIcon,
-  },
-  {
-    name: "Feedback",
-    url: "#",
-    icon: SendIcon,
-  },
+{
+name: "Design Engineering",
+url: "#",
+icon: FrameIcon,
+},
+{
+name: "Sales & Marketing",
+url: "#",
+icon: PieChartIcon,
+},
+{
+name: "Travel",
+url: "#",
+icon: MapIcon,
+},
+{
+name: "Support",
+url: "#",
+icon: LifeBuoyIcon,
+},
+{
+name: "Feedback",
+url: "#",
+icon: SendIcon,
+},
 ]
 
 export function AppSidebar() {
-  const [open, setOpen] = React.useState(true)
+const [open, setOpen] = React.useState(true)
 
-  return (
-    <SidebarProvider open={open} onOpenChange={setOpen}>
-      <Sidebar>
-        <SidebarContent>
-          <SidebarGroup>
-            <SidebarGroupLabel>Projects</SidebarGroupLabel>
-            <SidebarGroupContent>
-              <SidebarMenu>
-                {projects.map((project) => (
-                  <SidebarMenuItem key={project.name}>
-                    <SidebarMenuButton asChild>
-                      <a href={project.url}>
-                        <project.icon />
-                        <span>{project.name}</span>
-                      </a>
-                    </SidebarMenuButton>
-                  </SidebarMenuItem>
-                ))}
-              </SidebarMenu>
-            </SidebarGroupContent>
-          </SidebarGroup>
-        </SidebarContent>
-      </Sidebar>
-      <SidebarInset>
-        <header className="flex h-12 items-center justify-between px-4">
-          <Button
-            onClick={() => setOpen((open) => !open)}
-            size="sm"
-            variant="ghost"
-          >
-            {open ? <PanelLeftCloseIcon /> : <PanelLeftOpenIcon />}
-            <span>{open ? "Close" : "Open"} Sidebar</span>
-          </Button>
-        </header>
-      </SidebarInset>
-    </SidebarProvider>
-  )
+return (
+<SidebarProvider open={open} onOpenChange={setOpen}>
+<Sidebar>
+<SidebarContent>
+<SidebarGroup>
+<SidebarGroupLabel>Projects</SidebarGroupLabel>
+<SidebarGroupContent>
+<SidebarMenu>
+{projects.map((project) => (
+<SidebarMenuItem key={project.name}>
+<SidebarMenuButton asChild>
+<a href={project.url}>
+<project.icon />
+<span>{project.name}</span>
+</a>
+</SidebarMenuButton>
+</SidebarMenuItem>
+))}
+</SidebarMenu>
+</SidebarGroupContent>
+</SidebarGroup>
+</SidebarContent>
+</Sidebar>
+<SidebarInset>
+<header className="flex h-12 items-center justify-between px-4">
+<Button
+onClick={() => setOpen((open) => !open)}
+size="sm"
+variant="ghost" >
+{open ? <PanelLeftCloseIcon /> : <PanelLeftOpenIcon />}
+<span>{open ? "Close" : "Open"} Sidebar</span>
+</Button>
+</header>
+</SidebarInset>
+</SidebarProvider>
+)
 }
 
-```
+````
   <figcaption className="text-center text-sm text-gray-500">
     A controlled sidebar.
   </figcaption>
@@ -2512,7 +2509,7 @@ export function AppSidebar() {
     </SidebarProvider>
   )
 }
-```
+````
 
 ## Theming
 

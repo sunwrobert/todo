@@ -805,8 +805,8 @@ The main component that wraps inputs and addons.
 Displays icons, text, buttons, or other content alongside inputs.
 
 <Callout icon={<IconInfoCircle />} title="Focus Navigation">
-  For proper focus navigation, the `InputGroupAddon` component should be placed
-  after the input. Set the `align` prop to position the addon.
+For proper focus navigation, the `InputGroupAddon` component should be placed
+after the input. Set the `align` prop to position the addon.
 </Callout>
 
 | Prop        | Type                                                             | Default          |
