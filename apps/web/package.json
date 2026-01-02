@@ -6,7 +6,8 @@
     "build": "vite build",
     "serve": "vite preview",
     "dev:bare": "vite dev",
-    "check-types": "tsgo --noEmit"
+    "check-types": "tsgo --noEmit",
+    "test:unit": "vitest run"
   },
   "dependencies": {
     "@base-ui/react": "^1.0.0",
@@ -63,10 +64,12 @@
     "@types/react-dom": "19.2.3",
     "@typescript/native-preview": "catalog:",
     "@vitejs/plugin-react": "^5.0.4",
+    "@vitest/ui": "^4.0.16",
     "alchemy": "catalog:",
     "jsdom": "^26.0.0",
     "typescript": "catalog:",
     "vite": "^7.0.2",
+    "vitest": "^4.0.16",
     "web-vitals": "^5.0.3"
   }
 }

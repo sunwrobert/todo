@@ -38,7 +38,8 @@
     "db:generate": "bun run --filter @todo/db db:generate",
     "deploy": "bun run --filter @todo/infra deploy",
     "destroy": "bun run --filter @todo/infra destroy",
-    "prepare": "lefthook install"
+    "prepare": "lefthook install",
+    "test:unit": "bun run --filter '*' test:unit"
   },
   "dependencies": {
     "@todo/env": "workspace:*",
