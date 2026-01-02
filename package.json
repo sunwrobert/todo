@@ -39,6 +39,7 @@
     "deploy": "bun run --filter @todo/infra deploy",
     "destroy": "bun run --filter @todo/infra destroy",
     "prepare": "lefthook install",
+    "storybook": "bun run --filter web storybook",
     "test:unit": "bun run --filter '*' test:unit"
   },
   "dependencies": {

@@ -7,7 +7,9 @@
     "serve": "vite preview",
     "dev:bare": "vite dev",
     "check-types": "tsgo --noEmit",
-    "test:unit": "vitest run"
+    "test:unit": "vitest run",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "@base-ui/react": "^1.0.0",
@@ -55,6 +57,8 @@
   },
   "devDependencies": {
     "@cloudflare/vite-plugin": "^1.17.1",
+    "@storybook/addon-themes": "^10.1.11",
+    "@storybook/react-vite": "^10.1.11",
     "@tanstack/react-query-devtools": "^5.91.1",
     "@tanstack/react-router-devtools": "^1.141.1",
     "@testing-library/dom": "^10.4.0",
@@ -67,6 +71,7 @@
     "@vitest/ui": "^4.0.16",
     "alchemy": "catalog:",
     "jsdom": "^26.0.0",
+    "storybook": "^10.1.11",
     "typescript": "catalog:",
     "vite": "^7.0.2",
     "vitest": "^4.0.16",

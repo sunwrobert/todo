@@ -6,6 +6,7 @@
     "ultracite/oxlint/remix"
   ],
   "rules": {
-    "typescript/unbound-method": "off"
+    "typescript/unbound-method": "off",
+    "typescript/no-explicit-any": "error"
   }
 }
