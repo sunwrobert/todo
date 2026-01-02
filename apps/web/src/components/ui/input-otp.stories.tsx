@@ -20,13 +20,13 @@ const meta = {
 } satisfies Meta<typeof InputOTP>;
 
 export default meta;
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<typeof InputOTP>;
 
 export const Default: Story = {
   args: {
     maxLength: 6,
   },
-  render: (args) => (
+  render: ({ children: _, render: __, ...args }) => (
     <InputOTP {...args}>
       <InputOTPGroup>
         <InputOTPSlot index={0} />
@@ -47,7 +47,7 @@ export const WithoutSeparator: Story = {
   args: {
     maxLength: 6,
   },
-  render: (args) => (
+  render: ({ children: _, render: __, ...args }) => (
     <InputOTP {...args}>
       <InputOTPGroup>
         <InputOTPSlot index={0} />
@@ -65,7 +65,7 @@ export const FourDigits: Story = {
   args: {
     maxLength: 4,
   },
-  render: (args) => (
+  render: ({ children: _, render: __, ...args }) => (
     <InputOTP {...args}>
       <InputOTPGroup>
         <InputOTPSlot index={0} />
@@ -85,7 +85,7 @@ export const WithPattern: Story = {
     maxLength: 6,
     pattern: REGEXP_ONLY_DIGITS_AND_CHARS,
   },
-  render: (args) => (
+  render: ({ children: _, render: __, ...args }) => (
     <div className="space-y-2">
       <InputOTP {...args}>
         <InputOTPGroup>
@@ -109,7 +109,7 @@ export const DigitsOnly: Story = {
     maxLength: 6,
     pattern: REGEXP_ONLY_DIGITS,
   },
-  render: (args) => (
+  render: ({ children: _, render: __, ...args }) => (
     <div className="space-y-2">
       <InputOTP {...args}>
         <InputOTPGroup>
@@ -132,7 +132,7 @@ export const MultipleSeparators: Story = {
   args: {
     maxLength: 6,
   },
-  render: (args) => (
+  render: ({ children: _, render: __, ...args }) => (
     <InputOTP {...args}>
       <InputOTPGroup>
         <InputOTPSlot index={0} />
@@ -189,7 +189,7 @@ export const Disabled: Story = {
     maxLength: 6,
     disabled: true,
   },
-  render: (args) => (
+  render: ({ children: _, render: __, ...args }) => (
     <InputOTP {...args}>
       <InputOTPGroup>
         <InputOTPSlot index={0} />
@@ -211,7 +211,7 @@ export const WithDefaultValue: Story = {
     maxLength: 6,
     defaultValue: "123456",
   },
-  render: (args) => (
+  render: ({ children: _, render: __, ...args }) => (
     <InputOTP {...args}>
       <InputOTPGroup>
         <InputOTPSlot index={0} />

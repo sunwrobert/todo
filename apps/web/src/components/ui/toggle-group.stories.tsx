@@ -43,7 +43,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Single: Story = {
   render: () => (
-    <ToggleGroup type="single">
+    <ToggleGroup>
       <ToggleGroupItem value="left" aria-label="Align left">
         <AlignLeft className="h-4 w-4" />
       </ToggleGroupItem>
@@ -59,7 +59,7 @@ export const Single: Story = {
 
 export const Multiple: Story = {
   render: () => (
-    <ToggleGroup type="multiple">
+    <ToggleGroup>
       <ToggleGroupItem value="bold" aria-label="Toggle bold">
         <Bold className="h-4 w-4" />
       </ToggleGroupItem>
@@ -75,7 +75,7 @@ export const Multiple: Story = {
 
 export const Outline: Story = {
   render: () => (
-    <ToggleGroup type="multiple" variant="outline">
+    <ToggleGroup variant="outline">
       <ToggleGroupItem value="bold" aria-label="Toggle bold">
         <Bold className="h-4 w-4" />
       </ToggleGroupItem>
@@ -91,7 +91,7 @@ export const Outline: Story = {
 
 export const Small: Story = {
   render: () => (
-    <ToggleGroup type="single" size="sm">
+    <ToggleGroup size="sm">
       <ToggleGroupItem value="bold" aria-label="Toggle bold">
         <Bold className="h-4 w-4" />
       </ToggleGroupItem>
@@ -107,7 +107,7 @@ export const Small: Story = {
 
 export const Large: Story = {
   render: () => (
-    <ToggleGroup type="multiple" size="lg">
+    <ToggleGroup size="lg">
       <ToggleGroupItem value="bold" aria-label="Toggle bold">
         <Bold className="h-4 w-4" />
       </ToggleGroupItem>
@@ -123,7 +123,7 @@ export const Large: Story = {
 
 export const Disabled: Story = {
   render: () => (
-    <ToggleGroup type="multiple" disabled>
+    <ToggleGroup disabled>
       <ToggleGroupItem value="bold" aria-label="Toggle bold">
         <Bold className="h-4 w-4" />
       </ToggleGroupItem>
@@ -139,7 +139,7 @@ export const Disabled: Story = {
 
 export const WithSpacing: Story = {
   render: () => (
-    <ToggleGroup type="multiple" variant="outline" spacing={2}>
+    <ToggleGroup variant="outline" spacing={2}>
       <ToggleGroupItem value="bold" aria-label="Toggle bold">
         <Bold className="h-4 w-4" />
       </ToggleGroupItem>
@@ -155,7 +155,7 @@ export const WithSpacing: Story = {
 
 export const Vertical: Story = {
   render: () => (
-    <ToggleGroup type="single" orientation="vertical">
+    <ToggleGroup orientation="vertical">
       <ToggleGroupItem value="left" aria-label="Align left">
         <AlignLeft className="h-4 w-4" />
       </ToggleGroupItem>
@@ -171,12 +171,7 @@ export const Vertical: Story = {
 
 export const VerticalWithSpacing: Story = {
   render: () => (
-    <ToggleGroup
-      type="single"
-      orientation="vertical"
-      variant="outline"
-      spacing={2}
-    >
+    <ToggleGroup orientation="vertical" variant="outline" spacing={2}>
       <ToggleGroupItem value="left" aria-label="Align left">
         <AlignLeft className="h-4 w-4" />
       </ToggleGroupItem>
@@ -193,7 +188,7 @@ export const VerticalWithSpacing: Story = {
 export const AllSizes: Story = {
   render: () => (
     <div className="flex flex-col gap-4">
-      <ToggleGroup type="single" size="sm">
+      <ToggleGroup size="sm">
         <ToggleGroupItem value="bold" aria-label="Toggle bold">
           <Bold className="h-4 w-4" />
         </ToggleGroupItem>
@@ -201,7 +196,7 @@ export const AllSizes: Story = {
           <Italic className="h-4 w-4" />
         </ToggleGroupItem>
       </ToggleGroup>
-      <ToggleGroup type="single" size="default">
+      <ToggleGroup size="default">
         <ToggleGroupItem value="bold" aria-label="Toggle bold">
           <Bold className="h-4 w-4" />
         </ToggleGroupItem>
@@ -209,7 +204,7 @@ export const AllSizes: Story = {
           <Italic className="h-4 w-4" />
         </ToggleGroupItem>
       </ToggleGroup>
-      <ToggleGroup type="single" size="lg">
+      <ToggleGroup size="lg">
         <ToggleGroupItem value="bold" aria-label="Toggle bold">
           <Bold className="h-4 w-4" />
         </ToggleGroupItem>

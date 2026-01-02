@@ -25,8 +25,8 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   render: () => (
     <Popover>
-      <PopoverTrigger render={<Button variant="outline" />}>
-        Open popover
+      <PopoverTrigger>
+        <Button variant="outline">Open popover</Button>
       </PopoverTrigger>
       <PopoverContent>
         <PopoverHeader>
@@ -53,8 +53,8 @@ export const Default: Story = {
 export const WithHeaderAndDescription: Story = {
   render: () => (
     <Popover>
-      <PopoverTrigger render={<Button variant="outline" />}>
-        Settings
+      <PopoverTrigger>
+        <Button variant="outline">Settings</Button>
       </PopoverTrigger>
       <PopoverContent>
         <PopoverHeader>
@@ -82,7 +82,9 @@ export const WithHeaderAndDescription: Story = {
 export const SideTop: Story = {
   render: () => (
     <Popover>
-      <PopoverTrigger render={<Button variant="outline" />}>Top</PopoverTrigger>
+      <PopoverTrigger>
+        <Button variant="outline">Top</Button>
+      </PopoverTrigger>
       <PopoverContent side="top">
         <p>This popover appears on top.</p>
       </PopoverContent>
@@ -93,8 +95,8 @@ export const SideTop: Story = {
 export const SideRight: Story = {
   render: () => (
     <Popover>
-      <PopoverTrigger render={<Button variant="outline" />}>
-        Right
+      <PopoverTrigger>
+        <Button variant="outline">Right</Button>
       </PopoverTrigger>
       <PopoverContent side="right">
         <p>This popover appears on the right.</p>
@@ -106,8 +108,8 @@ export const SideRight: Story = {
 export const SideBottom: Story = {
   render: () => (
     <Popover>
-      <PopoverTrigger render={<Button variant="outline" />}>
-        Bottom
+      <PopoverTrigger>
+        <Button variant="outline">Bottom</Button>
       </PopoverTrigger>
       <PopoverContent side="bottom">
         <p>This popover appears on the bottom.</p>
@@ -119,8 +121,8 @@ export const SideBottom: Story = {
 export const SideLeft: Story = {
   render: () => (
     <Popover>
-      <PopoverTrigger render={<Button variant="outline" />}>
-        Left
+      <PopoverTrigger>
+        <Button variant="outline">Left</Button>
       </PopoverTrigger>
       <PopoverContent side="left">
         <p>This popover appears on the left.</p>
@@ -132,8 +134,8 @@ export const SideLeft: Story = {
 export const AlignStart: Story = {
   render: () => (
     <Popover>
-      <PopoverTrigger render={<Button variant="outline" />}>
-        Align Start
+      <PopoverTrigger>
+        <Button variant="outline">Align Start</Button>
       </PopoverTrigger>
       <PopoverContent align="start">
         <p>This popover is aligned to the start.</p>
@@ -145,8 +147,8 @@ export const AlignStart: Story = {
 export const AlignEnd: Story = {
   render: () => (
     <Popover>
-      <PopoverTrigger render={<Button variant="outline" />}>
-        Align End
+      <PopoverTrigger>
+        <Button variant="outline">Align End</Button>
       </PopoverTrigger>
       <PopoverContent align="end">
         <p>This popover is aligned to the end.</p>
@@ -158,8 +160,8 @@ export const AlignEnd: Story = {
 export const FormExample: Story = {
   render: () => (
     <Popover>
-      <PopoverTrigger render={<Button variant="outline" />}>
-        Update Email
+      <PopoverTrigger>
+        <Button variant="outline">Update Email</Button>
       </PopoverTrigger>
       <PopoverContent className="w-80">
         <PopoverHeader>
@@ -181,8 +183,8 @@ export const FormExample: Story = {
 export const SimpleContent: Story = {
   render: () => (
     <Popover>
-      <PopoverTrigger render={<Button variant="outline" />}>
-        Info
+      <PopoverTrigger>
+        <Button variant="outline">Info</Button>
       </PopoverTrigger>
       <PopoverContent>
         <p className="text-sm">
@@ -197,8 +199,8 @@ export const SimpleContent: Story = {
 export const WithCustomWidth: Story = {
   render: () => (
     <Popover>
-      <PopoverTrigger render={<Button variant="outline" />}>
-        Wide Popover
+      <PopoverTrigger>
+        <Button variant="outline">Wide Popover</Button>
       </PopoverTrigger>
       <PopoverContent className="w-96">
         <PopoverHeader>

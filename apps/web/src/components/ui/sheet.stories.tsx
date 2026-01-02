@@ -27,8 +27,8 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   render: () => (
     <Sheet>
-      <SheetTrigger asChild>
-        <Button variant="outline">Open Sheet</Button>
+      <SheetTrigger render={<Button variant="outline" />}>
+        Open Sheet
       </SheetTrigger>
       <SheetContent>
         <SheetHeader>
@@ -49,9 +49,7 @@ export const Default: Story = {
         </div>
         <SheetFooter>
           <Button type="submit">Save changes</Button>
-          <SheetClose asChild>
-            <Button variant="outline">Close</Button>
-          </SheetClose>
+          <SheetClose render={<Button variant="outline" />}>Close</SheetClose>
         </SheetFooter>
       </SheetContent>
     </Sheet>
@@ -61,8 +59,8 @@ export const Default: Story = {
 export const Left: Story = {
   render: () => (
     <Sheet>
-      <SheetTrigger asChild>
-        <Button variant="outline">Open Left</Button>
+      <SheetTrigger render={<Button variant="outline" />}>
+        Open Left
       </SheetTrigger>
       <SheetContent side="left">
         <SheetHeader>
@@ -84,8 +82,8 @@ export const Left: Story = {
 export const Top: Story = {
   render: () => (
     <Sheet>
-      <SheetTrigger asChild>
-        <Button variant="outline">Open Top</Button>
+      <SheetTrigger render={<Button variant="outline" />}>
+        Open Top
       </SheetTrigger>
       <SheetContent side="top">
         <SheetHeader>
@@ -107,8 +105,8 @@ export const Top: Story = {
 export const Bottom: Story = {
   render: () => (
     <Sheet>
-      <SheetTrigger asChild>
-        <Button variant="outline">Open Bottom</Button>
+      <SheetTrigger render={<Button variant="outline" />}>
+        Open Bottom
       </SheetTrigger>
       <SheetContent side="bottom">
         <SheetHeader>
@@ -130,8 +128,8 @@ export const Bottom: Story = {
 export const WithoutCloseButton: Story = {
   render: () => (
     <Sheet>
-      <SheetTrigger asChild>
-        <Button variant="outline">Open Sheet</Button>
+      <SheetTrigger render={<Button variant="outline" />}>
+        Open Sheet
       </SheetTrigger>
       <SheetContent showCloseButton={false}>
         <SheetHeader>
@@ -142,8 +140,8 @@ export const WithoutCloseButton: Story = {
           </SheetDescription>
         </SheetHeader>
         <SheetFooter>
-          <SheetClose asChild>
-            <Button variant="outline">Close Sheet</Button>
+          <SheetClose render={<Button variant="outline" />}>
+            Close Sheet
           </SheetClose>
         </SheetFooter>
       </SheetContent>
@@ -154,8 +152,8 @@ export const WithoutCloseButton: Story = {
 export const CustomWidth: Story = {
   render: () => (
     <Sheet>
-      <SheetTrigger asChild>
-        <Button variant="outline">Open Wide Sheet</Button>
+      <SheetTrigger render={<Button variant="outline" />}>
+        Open Wide Sheet
       </SheetTrigger>
       <SheetContent className="w-[400px] sm:w-[540px] sm:max-w-[540px]">
         <SheetHeader>
@@ -179,9 +177,7 @@ export const AllSides: Story = {
   render: () => (
     <div className="flex flex-wrap gap-2">
       <Sheet>
-        <SheetTrigger asChild>
-          <Button variant="outline">Top</Button>
-        </SheetTrigger>
+        <SheetTrigger render={<Button variant="outline" />}>Top</SheetTrigger>
         <SheetContent side="top">
           <SheetHeader>
             <SheetTitle>Top</SheetTitle>
@@ -190,9 +186,7 @@ export const AllSides: Story = {
         </SheetContent>
       </Sheet>
       <Sheet>
-        <SheetTrigger asChild>
-          <Button variant="outline">Right</Button>
-        </SheetTrigger>
+        <SheetTrigger render={<Button variant="outline" />}>Right</SheetTrigger>
         <SheetContent side="right">
           <SheetHeader>
             <SheetTitle>Right</SheetTitle>
@@ -201,8 +195,8 @@ export const AllSides: Story = {
         </SheetContent>
       </Sheet>
       <Sheet>
-        <SheetTrigger asChild>
-          <Button variant="outline">Bottom</Button>
+        <SheetTrigger render={<Button variant="outline" />}>
+          Bottom
         </SheetTrigger>
         <SheetContent side="bottom">
           <SheetHeader>
@@ -212,9 +206,7 @@ export const AllSides: Story = {
         </SheetContent>
       </Sheet>
       <Sheet>
-        <SheetTrigger asChild>
-          <Button variant="outline">Left</Button>
-        </SheetTrigger>
+        <SheetTrigger render={<Button variant="outline" />}>Left</SheetTrigger>
         <SheetContent side="left">
           <SheetHeader>
             <SheetTitle>Left</SheetTitle>

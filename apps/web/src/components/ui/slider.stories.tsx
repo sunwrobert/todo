@@ -87,7 +87,12 @@ export const WithLabel: Story = {
           <span className="text-sm font-medium">Volume</span>
           <span className="text-sm text-muted-foreground">{value[0]}%</span>
         </div>
-        <Slider value={value} onValueChange={setValue} max={100} step={1} />
+        <Slider
+          value={value}
+          onValueChange={(v) => setValue(v as number[])}
+          max={100}
+          step={1}
+        />
       </div>
     );
   },
@@ -106,7 +111,7 @@ export const PriceRange: Story = {
         </div>
         <Slider
           value={value}
-          onValueChange={setValue}
+          onValueChange={(v) => setValue(v as number[])}
           min={0}
           max={1000}
           step={10}
@@ -127,7 +132,7 @@ export const Temperature: Story = {
         </div>
         <Slider
           value={value}
-          onValueChange={setValue}
+          onValueChange={(v) => setValue(v as number[])}
           min={16}
           max={30}
           step={0.5}

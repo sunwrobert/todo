@@ -90,14 +90,14 @@ export const Error: Story = {
   ),
 };
 
-export const Promise: Story = {
+export const PromiseToast: Story = {
   render: () => (
     <Button
       variant="outline"
       onClick={() => {
-        toast.promise<{ name: string }>(
+        toast.promise(
           () =>
-            new Promise((resolve) =>
+            new Promise<{ name: string }>((resolve) =>
               setTimeout(() => resolve({ name: "Event" }), 2000)
             ),
           {

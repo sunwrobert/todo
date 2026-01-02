@@ -24,13 +24,19 @@ function SelectGroup({ className, ...props }: SelectPrimitive.Group.Props) {
   );
 }
 
-function SelectValue({ className, ...props }: SelectPrimitive.Value.Props) {
+type SelectValueProps = React.ComponentProps<typeof SelectPrimitive.Value> & {
+  placeholder?: string;
+};
+
+function SelectValue({ className, placeholder, ...props }: SelectValueProps) {
   return (
     <SelectPrimitive.Value
       data-slot="select-value"
       className={cn("flex flex-1 text-left", className)}
       {...props}
-    />
+    >
+      {placeholder}
+    </SelectPrimitive.Value>
   );
 }
 

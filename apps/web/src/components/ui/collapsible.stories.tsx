@@ -36,11 +36,11 @@ export const Default: Story = {
           <h4 className="text-sm font-semibold">
             @peduarte starred 3 repositories
           </h4>
-          <CollapsibleTrigger asChild>
-            <Button variant="ghost" size="icon" className="size-8">
-              <ChevronsUpDownIcon className="size-4" />
-              <span className="sr-only">Toggle</span>
-            </Button>
+          <CollapsibleTrigger
+            render={<Button variant="ghost" size="icon" className="size-8" />}
+          >
+            <ChevronsUpDownIcon className="size-4" />
+            <span className="sr-only">Toggle</span>
           </CollapsibleTrigger>
         </div>
         <div className="rounded-md border px-4 py-2 font-mono text-sm">
@@ -64,11 +64,11 @@ export const DefaultOpen: Story = {
     <Collapsible defaultOpen className="flex w-[350px] flex-col gap-2">
       <div className="flex items-center justify-between gap-4 px-4">
         <h4 className="text-sm font-semibold">Default Open Collapsible</h4>
-        <CollapsibleTrigger asChild>
-          <Button variant="ghost" size="icon" className="size-8">
-            <ChevronsUpDownIcon className="size-4" />
-            <span className="sr-only">Toggle</span>
-          </Button>
+        <CollapsibleTrigger
+          render={<Button variant="ghost" size="icon" className="size-8" />}
+        >
+          <ChevronsUpDownIcon className="size-4" />
+          <span className="sr-only">Toggle</span>
         </CollapsibleTrigger>
       </div>
       <div className="rounded-md border px-4 py-2 font-mono text-sm">
@@ -106,11 +106,13 @@ export const Disabled: Story = {
     <Collapsible disabled className="flex w-[350px] flex-col gap-2">
       <div className="flex items-center justify-between gap-4 px-4">
         <h4 className="text-sm font-semibold">Disabled Collapsible</h4>
-        <CollapsibleTrigger asChild>
-          <Button variant="ghost" size="icon" className="size-8" disabled>
-            <ChevronsUpDownIcon className="size-4" />
-            <span className="sr-only">Toggle</span>
-          </Button>
+        <CollapsibleTrigger
+          render={
+            <Button variant="ghost" size="icon" className="size-8" disabled />
+          }
+        >
+          <ChevronsUpDownIcon className="size-4" />
+          <span className="sr-only">Toggle</span>
         </CollapsibleTrigger>
       </div>
       <div className="rounded-md border px-4 py-2 font-mono text-sm opacity-50">

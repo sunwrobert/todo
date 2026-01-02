@@ -75,7 +75,7 @@ export const Controlled: Story = {
           <Checkbox
             id="controlled"
             checked={checked}
-            onCheckedChange={setChecked}
+            onCheckedChange={(checked) => setChecked(checked)}
           />
           <label
             htmlFor="controlled"

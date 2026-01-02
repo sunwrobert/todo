@@ -20,7 +20,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   render: () => (
     <Tooltip>
-      <TooltipTrigger asChild>
+      <TooltipTrigger>
         <Button variant="outline">Hover me</Button>
       </TooltipTrigger>
       <TooltipContent>
@@ -33,7 +33,7 @@ export const Default: Story = {
 export const SideTop: Story = {
   render: () => (
     <Tooltip>
-      <TooltipTrigger asChild>
+      <TooltipTrigger>
         <Button variant="outline">Top</Button>
       </TooltipTrigger>
       <TooltipContent side="top">
@@ -46,7 +46,7 @@ export const SideTop: Story = {
 export const SideBottom: Story = {
   render: () => (
     <Tooltip>
-      <TooltipTrigger asChild>
+      <TooltipTrigger>
         <Button variant="outline">Bottom</Button>
       </TooltipTrigger>
       <TooltipContent side="bottom">
@@ -59,7 +59,7 @@ export const SideBottom: Story = {
 export const SideLeft: Story = {
   render: () => (
     <Tooltip>
-      <TooltipTrigger asChild>
+      <TooltipTrigger>
         <Button variant="outline">Left</Button>
       </TooltipTrigger>
       <TooltipContent side="left">
@@ -72,7 +72,7 @@ export const SideLeft: Story = {
 export const SideRight: Story = {
   render: () => (
     <Tooltip>
-      <TooltipTrigger asChild>
+      <TooltipTrigger>
         <Button variant="outline">Right</Button>
       </TooltipTrigger>
       <TooltipContent side="right">
@@ -85,7 +85,7 @@ export const SideRight: Story = {
 export const WithOffset: Story = {
   render: () => (
     <Tooltip>
-      <TooltipTrigger asChild>
+      <TooltipTrigger>
         <Button variant="outline">With Offset</Button>
       </TooltipTrigger>
       <TooltipContent sideOffset={10}>
@@ -98,7 +98,7 @@ export const WithOffset: Story = {
 export const AlignStart: Story = {
   render: () => (
     <Tooltip>
-      <TooltipTrigger asChild>
+      <TooltipTrigger>
         <Button variant="outline" className="w-32">
           Align Start
         </Button>
@@ -113,7 +113,7 @@ export const AlignStart: Story = {
 export const AlignEnd: Story = {
   render: () => (
     <Tooltip>
-      <TooltipTrigger asChild>
+      <TooltipTrigger>
         <Button variant="outline" className="w-32">
           Align End
         </Button>
@@ -128,7 +128,7 @@ export const AlignEnd: Story = {
 export const LongContent: Story = {
   render: () => (
     <Tooltip>
-      <TooltipTrigger asChild>
+      <TooltipTrigger>
         <Button variant="outline">Long Content</Button>
       </TooltipTrigger>
       <TooltipContent>
@@ -145,7 +145,7 @@ export const AllSides: Story = {
   render: () => (
     <div className="flex flex-col items-center gap-8 p-20">
       <Tooltip>
-        <TooltipTrigger asChild>
+        <TooltipTrigger>
           <Button variant="outline">Top</Button>
         </TooltipTrigger>
         <TooltipContent side="top">
@@ -154,7 +154,7 @@ export const AllSides: Story = {
       </Tooltip>
       <div className="flex gap-8">
         <Tooltip>
-          <TooltipTrigger asChild>
+          <TooltipTrigger>
             <Button variant="outline">Left</Button>
           </TooltipTrigger>
           <TooltipContent side="left">
@@ -162,7 +162,7 @@ export const AllSides: Story = {
           </TooltipContent>
         </Tooltip>
         <Tooltip>
-          <TooltipTrigger asChild>
+          <TooltipTrigger>
             <Button variant="outline">Right</Button>
           </TooltipTrigger>
           <TooltipContent side="right">
@@ -171,7 +171,7 @@ export const AllSides: Story = {
         </Tooltip>
       </div>
       <Tooltip>
-        <TooltipTrigger asChild>
+        <TooltipTrigger>
           <Button variant="outline">Bottom</Button>
         </TooltipTrigger>
         <TooltipContent side="bottom">

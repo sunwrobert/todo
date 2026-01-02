@@ -22,8 +22,8 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   render: () => (
     <HoverCard>
-      <HoverCardTrigger render={<Button variant="link" />}>
-        @nextjs
+      <HoverCardTrigger>
+        <Button variant="link">@nextjs</Button>
       </HoverCardTrigger>
       <HoverCardContent className="w-80">
         <div className="flex justify-between gap-4">
@@ -49,8 +49,8 @@ export const Default: Story = {
 export const SideTop: Story = {
   render: () => (
     <HoverCard>
-      <HoverCardTrigger render={<Button variant="outline" />}>
-        Hover me (top)
+      <HoverCardTrigger>
+        <Button variant="outline">Hover me (top)</Button>
       </HoverCardTrigger>
       <HoverCardContent side="top">
         <p className="text-sm">This hover card appears on top.</p>
@@ -62,8 +62,8 @@ export const SideTop: Story = {
 export const SideBottom: Story = {
   render: () => (
     <HoverCard>
-      <HoverCardTrigger render={<Button variant="outline" />}>
-        Hover me (bottom)
+      <HoverCardTrigger>
+        <Button variant="outline">Hover me (bottom)</Button>
       </HoverCardTrigger>
       <HoverCardContent side="bottom">
         <p className="text-sm">This hover card appears on the bottom.</p>
@@ -75,8 +75,8 @@ export const SideBottom: Story = {
 export const SideLeft: Story = {
   render: () => (
     <HoverCard>
-      <HoverCardTrigger render={<Button variant="outline" />}>
-        Hover me (left)
+      <HoverCardTrigger>
+        <Button variant="outline">Hover me (left)</Button>
       </HoverCardTrigger>
       <HoverCardContent side="left">
         <p className="text-sm">This hover card appears on the left.</p>
@@ -88,8 +88,8 @@ export const SideLeft: Story = {
 export const SideRight: Story = {
   render: () => (
     <HoverCard>
-      <HoverCardTrigger render={<Button variant="outline" />}>
-        Hover me (right)
+      <HoverCardTrigger>
+        <Button variant="outline">Hover me (right)</Button>
       </HoverCardTrigger>
       <HoverCardContent side="right">
         <p className="text-sm">This hover card appears on the right.</p>
@@ -101,8 +101,8 @@ export const SideRight: Story = {
 export const AlignStart: Story = {
   render: () => (
     <HoverCard>
-      <HoverCardTrigger render={<Button variant="outline" />}>
-        Align Start
+      <HoverCardTrigger>
+        <Button variant="outline">Align Start</Button>
       </HoverCardTrigger>
       <HoverCardContent align="start" className="w-64">
         <p className="text-sm">This hover card is aligned to the start.</p>
@@ -114,8 +114,8 @@ export const AlignStart: Story = {
 export const AlignEnd: Story = {
   render: () => (
     <HoverCard>
-      <HoverCardTrigger render={<Button variant="outline" />}>
-        Align End
+      <HoverCardTrigger>
+        <Button variant="outline">Align End</Button>
       </HoverCardTrigger>
       <HoverCardContent align="end" className="w-64">
         <p className="text-sm">This hover card is aligned to the end.</p>
@@ -127,8 +127,8 @@ export const AlignEnd: Story = {
 export const WithCustomOffset: Story = {
   render: () => (
     <HoverCard>
-      <HoverCardTrigger render={<Button variant="outline" />}>
-        Custom Offset
+      <HoverCardTrigger>
+        <Button variant="outline">Custom Offset</Button>
       </HoverCardTrigger>
       <HoverCardContent sideOffset={16} alignOffset={16}>
         <p className="text-sm">
@@ -142,8 +142,8 @@ export const WithCustomOffset: Story = {
 export const RichContent: Story = {
   render: () => (
     <HoverCard>
-      <HoverCardTrigger render={<Button variant="link" />}>
-        View User Profile
+      <HoverCardTrigger>
+        <Button variant="link">View User Profile</Button>
       </HoverCardTrigger>
       <HoverCardContent className="w-80">
         <div className="space-y-4">
