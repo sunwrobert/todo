@@ -1,7 +1,7 @@
 import alchemy from "alchemy";
-import { TanStackStart } from "alchemy/cloudflare";
-import { Worker } from "alchemy/cloudflare";
-import { D1Database } from "alchemy/cloudflare";
+import { D1Database, TanStackStart, Worker } from "alchemy/cloudflare";
+import { GitHubComment } from "alchemy/github";
+import { CloudflareStateStore } from "alchemy/state";
 import { config } from "dotenv";
 
 const envSuffix = process.env.IS_DEV === "true" ? ".dev" : "";
@@ -10,7 +10,9 @@ config({ path: `./.env${envSuffix}` });
 config({ path: `../../apps/web/.env${envSuffix}` });
 config({ path: `../../apps/server/.env${envSuffix}` });
 
-const app = await alchemy("todo");
+const app = await alchemy("todo", {
+  stateStore: (scope) => new CloudflareStateStore(scope),
+});
 
 const db = await D1Database("database", {
   migrationsDir: "../../packages/db/src/migrations",
@@ -44,5 +46,26 @@ export const server = await Worker("server", {
 
 console.log(`Web    -> ${web.url}`);
 console.log(`Server -> ${server.url}`);
+
+if (process.env.PULL_REQUEST) {
+  await GitHubComment("preview-comment", {
+    owner: "sunwrobert",
+    repository: "todo",
+    issueNumber: Number(process.env.PULL_REQUEST),
+    body: `## Preview Deployed
+
+Your changes have been deployed to a preview environment:
+
+| Service | URL |
+|---------|-----|
+| Web | ${web.url} |
+| Server | ${server.url} |
+
+Built from commit ${process.env.GITHUB_SHA?.slice(0, 7)}
+
+---
+<sub>This comment updates automatically with each push.</sub>`,
+  });
+}
 
 await app.finalize();
