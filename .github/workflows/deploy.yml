@@ -35,7 +35,8 @@ jobs:
         run: bun install --frozen-lockfile
 
       - name: Deploy
-        run: node --run deploy -- --stage ${{ env.STAGE }}
+        run: npx alchemy deploy --stage ${{ env.STAGE }}
+        working-directory: packages/infra
         env:
           ALCHEMY_PASSWORD: ${{ secrets.ALCHEMY_PASSWORD }}
           ALCHEMY_STATE_TOKEN: ${{ secrets.ALCHEMY_STATE_TOKEN }}
@@ -73,7 +74,8 @@ jobs:
           fi
 
       - name: Destroy Preview Environment
-        run: node --run destroy -- --stage ${{ env.STAGE }}
+        run: npx alchemy destroy --stage ${{ env.STAGE }}
+        working-directory: packages/infra
         env:
           ALCHEMY_PASSWORD: ${{ secrets.ALCHEMY_PASSWORD }}
           ALCHEMY_STATE_TOKEN: ${{ secrets.ALCHEMY_STATE_TOKEN }}
