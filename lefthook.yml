@@ -9,4 +9,5 @@ pre-commit:
         - "*.json"
         - "*.jsonc"
         - "*.css"
+        - "*.md"
       stage_fixed: true
