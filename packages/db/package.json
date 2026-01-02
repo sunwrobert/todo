@@ -14,18 +14,18 @@
     "db:generate": "drizzle-kit generate",
     "check-types": "tsgo --noEmit"
   },
+  "dependencies": {
+    "@libsql/client": "catalog:",
+    "@todo/env": "workspace:*",
+    "dotenv": "catalog:",
+    "drizzle-orm": "^0.45.1",
+    "libsql": "catalog:",
+    "zod": "catalog:"
+  },
   "devDependencies": {
+    "@todo/config": "workspace:*",
     "@typescript/native-preview": "catalog:",
     "drizzle-kit": "^0.31.8",
-    "typescript": "catalog:",
-    "@todo/config": "workspace:*"
-  },
-  "dependencies": {
-    "drizzle-orm": "^0.45.1",
-    "@libsql/client": "catalog:",
-    "libsql": "catalog:",
-    "dotenv": "catalog:",
-    "zod": "catalog:",
-    "@todo/env": "workspace:*"
+    "typescript": "catalog:"
   }
 }

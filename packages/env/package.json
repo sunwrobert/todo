@@ -11,15 +11,15 @@
     "check-types": "tsgo --noEmit"
   },
   "dependencies": {
-    "zod": "catalog:",
     "@t3-oss/env-core": "^0.13.1",
-    "dotenv": "catalog:"
+    "dotenv": "catalog:",
+    "zod": "catalog:"
   },
   "devDependencies": {
-    "@typescript/native-preview": "catalog:",
-    "typescript": "catalog:",
-    "@types/node": "catalog:",
     "@todo/config": "workspace:*",
-    "@todo/infra": "workspace:*"
+    "@todo/infra": "workspace:*",
+    "@types/node": "catalog:",
+    "@typescript/native-preview": "catalog:",
+    "typescript": "catalog:"
   }
 }

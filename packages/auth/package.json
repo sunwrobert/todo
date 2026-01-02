@@ -12,16 +12,16 @@
   "scripts": {
     "check-types": "tsgo --noEmit"
   },
-  "devDependencies": {
-    "@typescript/native-preview": "catalog:",
-    "typescript": "catalog:",
-    "@todo/config": "workspace:*"
-  },
   "dependencies": {
+    "@todo/db": "workspace:*",
+    "@todo/env": "workspace:*",
     "better-auth": "catalog:",
     "dotenv": "catalog:",
-    "zod": "catalog:",
-    "@todo/env": "workspace:*",
-    "@todo/db": "workspace:*"
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@todo/config": "workspace:*",
+    "@typescript/native-preview": "catalog:",
+    "typescript": "catalog:"
   }
 }

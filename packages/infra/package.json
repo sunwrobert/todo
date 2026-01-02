@@ -13,9 +13,9 @@
     "zod": "catalog:"
   },
   "devDependencies": {
+    "@todo/config": "workspace:*",
     "@typescript/native-preview": "catalog:",
     "alchemy": "catalog:",
-    "typescript": "catalog:",
-    "@todo/config": "workspace:*"
+    "typescript": "catalog:"
   }
 }

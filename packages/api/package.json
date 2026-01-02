@@ -13,20 +13,20 @@
     "check-types": "tsgo --noEmit"
   },
   "dependencies": {
-    "@orpc/server": "catalog:",
     "@orpc/client": "catalog:",
     "@orpc/openapi": "catalog:",
+    "@orpc/server": "catalog:",
     "@orpc/zod": "catalog:",
-    "hono": "catalog:",
-    "dotenv": "catalog:",
-    "zod": "catalog:",
-    "@todo/env": "workspace:*",
     "@todo/auth": "workspace:*",
-    "@todo/db": "workspace:*"
+    "@todo/db": "workspace:*",
+    "@todo/env": "workspace:*",
+    "dotenv": "catalog:",
+    "hono": "catalog:",
+    "zod": "catalog:"
   },
   "devDependencies": {
+    "@todo/config": "workspace:*",
     "@typescript/native-preview": "catalog:",
-    "typescript": "catalog:",
-    "@todo/config": "workspace:*"
+    "typescript": "catalog:"
   }
 }

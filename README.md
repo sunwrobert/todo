@@ -22,20 +22,21 @@ First, install the dependencies:
 ```bash
 bun install
 ```
+
 ## Database Setup
 
 This project uses SQLite with Drizzle ORM.
 
- 1. Start the local SQLite database (optional):
-D1 local development and migrations are handled automatically by Alchemy during dev and deploy.
+1. Start the local SQLite database (optional):
+   D1 local development and migrations are handled automatically by Alchemy during dev and deploy.
 
 2. Update your `.env` file in the `apps/server` directory with the appropriate connection details if needed.
 
 3. Apply the schema to your database:
+
 ```bash
 bun run db:push
 ```
-
 
 Then, run the development server:
 
@@ -47,12 +48,12 @@ Open [http://localhost:3001](http://localhost:3001) in your browser to see the w
 The API is running at [http://localhost:3000](http://localhost:3000).
 
 ## Deployment (Cloudflare via Alchemy)
+
 - Dev: bun run dev
 - Deploy: bun run deploy
 - Destroy: bun run destroy
 
 For more details, see the guide on [Deploying to Cloudflare with Alchemy](https://www.better-t-stack.dev/docs/guides/cloudflare-alchemy).
-
 
 ## Project Structure
 

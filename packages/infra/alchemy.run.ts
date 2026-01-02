@@ -10,7 +10,6 @@ config({ path: `./.env${envSuffix}` });
 config({ path: `../../apps/web/.env${envSuffix}` });
 config({ path: `../../apps/server/.env${envSuffix}` });
 
-
 const app = await alchemy("todo");
 
 const db = await D1Database("database", {
