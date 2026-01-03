@@ -1,107 +1,338 @@
 ---
-name: effect-ts
-description: Work with Effect TypeScript - a powerful library for type-safe, composable, and resilient applications. Use when writing Effect code, setting up Effect in a project, or when the user mentions Effect, pipes, services, layers, or functional TypeScript patterns.
+name: writing-effect-ts
+description: Provides idiomatic patterns for Effect TypeScript. Use when writing Effect code (Effect.gen, Effect.fn, pipes), working with services and layers, data modeling with Schema, error handling, configuration, or testing with @effect/vitest.
 ---
 
-# Effect TypeScript
+# Effect-TS
 
-## Quick check: Is Effect set up?
+**Reference**: `effect-solutions show <topic>` for detailed examples. Effect source at `~/.local/share/effect-solutions/effect` for deeper reference.
 
-Run this to assess the project:
+## Basics
+
+### Effect.gen - sequencing
+
+```typescript
+const program = Effect.gen(function* () {
+  const data = yield* fetchData
+  yield* Effect.logInfo(`Processing: ${data}`)
+  return yield* processData(data)
+})
+```
+
+### Effect.fn - traced functions
+
+```typescript
+const processUser = Effect.fn("processUser")(function* (userId: string) {
+  const user = yield* getUser(userId)
+  return yield* processData(user)
+})
+```
+
+### Pipe - instrumentation
+
+```typescript
+const program = fetchData.pipe(
+  Effect.timeout("5 seconds"),
+  Effect.retry(Schedule.exponential("100 millis").pipe(Schedule.compose(Schedule.recurs(3)))),
+  Effect.tap((data) => Effect.logInfo(`Fetched: ${data}`)),
+  Effect.withSpan("fetchData")
+)
+```
+
+## Services & Layers
+
+### Service definition
+
+```typescript
+class Database extends Context.Tag("@app/Database")<
+  Database,
+  {
+    readonly query: (sql: string) => Effect.Effect<unknown[]>
+    readonly execute: (sql: string) => Effect.Effect<void>
+  }
+>() {}
+```
+
+Rules:
+
+- Tag identifiers unique (`@path/ServiceName`)
+- Methods have no deps (`R = never`)
+- Use `readonly`
+
+### Layer implementation
+
+```typescript
+class Users extends Context.Tag("@app/Users")<
+  Users,
+  { readonly findById: (id: UserId) => Effect.Effect<User, UsersError> }
+>() {
+  static readonly layer = Layer.effect(
+    Users,
+    Effect.gen(function* () {
+      const http = yield* HttpClient.HttpClient
+
+      const findById = Effect.fn("Users.findById")(function* (id: UserId) {
+        const response = yield* http.get(`/users/${id}`)
+        return yield* HttpClientResponse.schemaBodyJson(User)(response)
+      })
+
+      return Users.of({ findById })
+    })
+  )
+}
+```
+
+### Test layer
+
+```typescript
+class Database extends Context.Tag("@app/Database")<Database, {...}>() {
+  static readonly testLayer = Layer.sync(Database, () => {
+    const store = new Map()
+    return Database.of({
+      query: (sql) => Effect.succeed([...store.values()]),
+      execute: (sql) => Effect.sync(() => void store.clear())
+    })
+  })
+}
+```
+
+### Provide once at top
+
+```typescript
+const appLayer = userServiceLayer.pipe(
+  Layer.provideMerge(databaseLayer),
+  Layer.provideMerge(configLayer)
+)
+const main = program.pipe(Effect.provide(appLayer))
+```
+
+### Layer memoization
+
+Store parameterized layers in constants:
+
+```typescript
+// Bad: creates two pools
+Layer.provide(Postgres.layer({ poolSize: 10 }))
+Layer.provide(Postgres.layer({ poolSize: 10 }))
+
+// Good: single pool
+const postgresLayer = Postgres.layer({ poolSize: 10 })
+Layer.provide(postgresLayer)
+```
+
+## Data Modeling
+
+### Schema.Class - records
+
+```typescript
+const UserId = Schema.String.pipe(Schema.brand("UserId"))
+type UserId = typeof UserId.Type
+
+class User extends Schema.Class<User>("User")({
+  id: UserId,
+  name: Schema.String,
+  email: Schema.String,
+}) {}
+```
+
+### Schema.TaggedClass - variants
+
+```typescript
+class Success extends Schema.TaggedClass<Success>()("Success", {
+  value: Schema.Number,
+}) {}
+
+class Failure extends Schema.TaggedClass<Failure>()("Failure", {
+  error: Schema.String,
+}) {}
+
+const Result = Schema.Union(Success, Failure)
+
+Match.valueTags(result, {
+  Success: ({ value }) => `Got: ${value}`,
+  Failure: ({ error }) => `Error: ${error}`
+})
+```
+
+### Branded types
+
+Brand all domain primitives:
+
+```typescript
+const UserId = Schema.String.pipe(Schema.brand("UserId"))
+const PostId = Schema.String.pipe(Schema.brand("PostId"))
+const Email = Schema.String.pipe(Schema.brand("Email"))
+const Port = Schema.Int.pipe(Schema.between(1, 65535), Schema.brand("Port"))
+```
+
+### JSON parsing
+
+```typescript
+const MoveFromJson = Schema.parseJson(Move)
+const move = yield* Schema.decodeUnknown(MoveFromJson)(jsonString)
+const json = yield* Schema.encode(MoveFromJson)(move)
+```
+
+## Error Handling
+
+### Schema.TaggedError
+
+```typescript
+class NotFoundError extends Schema.TaggedError<NotFoundError>()(
+  "NotFoundError",
+  { resource: Schema.String, id: Schema.String }
+) {}
+```
+
+Yieldable - no `Effect.fail()` needed:
+
+```typescript
+return status === 404 ? NotFoundError.make({ id }) : Effect.die(error)
+```
+
+### catchTag / catchTags
+
+```typescript
+program.pipe(Effect.catchTag("HttpError", (e) => Effect.succeed("recovered")))
+
+program.pipe(Effect.catchTags({
+  HttpError: () => Effect.succeed("http"),
+  ValidationError: () => Effect.succeed("validation")
+}))
+```
+
+### Errors vs defects
+
+- **Typed errors**: domain failures caller can handle (validation, not found, denied)
+- **Defects**: unrecoverable bugs, invariant violations
+
+```typescript
+const config = yield* loadConfig.pipe(Effect.orDie)
+```
+
+### Schema.Defect - wrap unknown
+
+```typescript
+class ApiError extends Schema.TaggedError<ApiError>()(
+  "ApiError",
+  { endpoint: Schema.String, error: Schema.Defect }
+) {}
+```
+
+## Config
+
+### Basic
+
+```typescript
+const apiKey = yield* Config.redacted("API_KEY")
+const port = yield* Config.integer("PORT")
+```
+
+### Config service pattern
+
+```typescript
+class ApiConfig extends Context.Tag("@app/ApiConfig")<
+  ApiConfig,
+  { readonly apiKey: Redacted.Redacted; readonly baseUrl: string }
+>() {
+  static readonly layer = Layer.effect(
+    ApiConfig,
+    Effect.gen(function* () {
+      const apiKey = yield* Config.redacted("API_KEY")
+      const baseUrl = yield* Config.string("API_BASE_URL").pipe(
+        Config.orElse(() => Config.succeed("https://api.example.com"))
+      )
+      return ApiConfig.of({ apiKey, baseUrl })
+    })
+  )
+}
+```
+
+### Schema.Config - validation
+
+```typescript
+const Port = Schema.Int.pipe(Schema.between(1, 65535), Schema.brand("Port"))
+const port = yield* Schema.Config("PORT", Port)
+```
+
+### Primitives
+
+```typescript
+Config.string("VAR")
+Config.integer("PORT")
+Config.boolean("DEBUG")
+Config.redacted("SECRET")  // hidden in logs
+Config.url("URL")
+Config.duration("TIMEOUT")
+Config.array(Config.string(), "TAGS")
+```
+
+## Testing
+
+### Setup
 
 ```bash
-ls -la package.json tsconfig.json 2>/dev/null && grep -l "effect" package.json 2>/dev/null
+bun add -D vitest @effect/vitest
 ```
-
-**If Effect is in dependencies**: Ready to work with Effect.
-
-**If Effect is NOT set up and user wants to set it up**: Read [references/setup.md](references/setup.md) in full and follow the guide step-by-step.
-
-## Best practices
-
-Before implementing Effect features, run `effect-solutions list` and read the relevant guide.
-
-Topics include: services and layers, data modeling, error handling, configuration, testing, HTTP clients, CLIs, observability, and project structure.
-
-**Effect Source Reference:** `~/.local/share/effect-solutions/effect`
-Search here for real implementations when docs aren't enough.
-
-## Core patterns
-
-### Error handling - ALWAYS use TaggedError
-
-**Never use raw `Error` in Effect code.** Always use `Data.TaggedError` for typed, trackable errors:
 
 ```typescript
-// ❌ BAD - raw Error loses type information
-Effect.fail(new Error("Something went wrong"));
-
-// ✅ GOOD - TaggedError is typed and trackable
-class MyError extends Data.TaggedError("MyError")<{
-  readonly reason: string;
-}> {}
-
-Effect.fail(new MyError({ reason: "Something went wrong" }));
+// vitest.config.ts
+export default defineConfig({ test: { include: ["tests/**/*.test.ts"] } })
 ```
 
-Benefits:
-
-- Full type inference in error channel
-- Pattern matching with `Effect.catchTag`
-- Automatic `_tag` discriminator for union handling
-- Structured error data instead of string messages
-
-### Pipes and composition
+### Basic test
 
 ```typescript
-import { Effect, pipe } from 'effect';
+import { describe, expect, it } from "@effect/vitest"
 
-const program = pipe(
-  Effect.succeed(1),
-  Effect.map((n) => n + 1),
-  Effect.flatMap((n) => Effect.succeed(n * 2))
-);
+describe("Calculator", () => {
+  it.effect("adds numbers", () =>
+    Effect.gen(function* () {
+      const result = yield* Effect.succeed(1 + 1)
+      expect(result).toBe(2)
+    })
+  )
+})
 ```
 
-### Services and Layers
+### Variants
+
+- `it.effect()` - Effect tests (most common)
+- `it.scoped()` - scoped resources, auto cleanup
+- `it.live()` - real clock (no TestClock)
+
+### TestClock
 
 ```typescript
-import { Context, Effect, Layer } from 'effect';
-
-class Database extends Context.Tag('Database')<
-  Database,
-  { readonly query: (sql: string) => Effect.Effect<unknown[]> }
->() {}
-
-const DatabaseLive = Layer.succeed(Database, {
-  query: (sql) => Effect.succeed([]),
-});
+it.effect("time test", () =>
+  Effect.gen(function* () {
+    const fiber = yield* Effect.delay(Effect.succeed("done"), "10 seconds").pipe(Effect.fork)
+    yield* TestClock.adjust("10 seconds")
+    expect(yield* Fiber.join(fiber)).toBe("done")
+  })
+)
 ```
 
-### Error handling
+### Provide layers
 
 ```typescript
-import { Effect, Data } from 'effect';
+const testLayer = Events.layer.pipe(
+  Layer.provideMerge(Users.testLayer),
+  Layer.provideMerge(Tickets.testLayer)
+)
 
-class NotFoundError extends Data.TaggedError('NotFoundError')<{
-  readonly id: string;
-}> {}
-
-const findUser = (id: string) => Effect.fail(new NotFoundError({ id }));
+it.effect("test", () =>
+  Effect.gen(function* () {
+    const events = yield* Events
+    // ...
+  }).pipe(Effect.provide(testLayer))
+)
 ```
 
-## Schema (built-in since Effect 3.10)
+### Modifiers
 
 ```typescript
-import { Schema } from 'effect';
-
-const User = Schema.Struct({
-  id: Schema.String,
-  name: Schema.String,
-  age: Schema.Number,
-});
-
-type User = typeof User.Type;
+it.effect.skip("disabled", () => ...)
+it.effect.only("focus", () => ...)
+it.effect.fails("expected fail", () => ...)
 ```
-
-Note: `@effect/schema` is deprecated. Use `effect/Schema` instead.
