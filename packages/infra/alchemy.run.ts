@@ -10,9 +10,12 @@ config({ path: `./.env${envSuffix}` });
 config({ path: `../../apps/web/.env${envSuffix}` });
 config({ path: `../../apps/server/.env${envSuffix}` });
 
-const app = await alchemy("todo", {
-  stateStore: (scope) => new CloudflareStateStore(scope),
-});
+const app = await alchemy(
+  "todo",
+  process.env.IS_DEV !== "true"
+    ? { stateStore: (scope) => new CloudflareStateStore(scope) }
+    : {}
+);
 
 const db = await D1Database("database", {
   migrationsDir: "../../packages/db/src/migrations",
