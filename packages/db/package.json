@@ -5,6 +5,18 @@
     ".": {
       "default": "./src/index.ts"
     },
+    "./schema": {
+      "default": "./src/schema/index.ts"
+    },
+    "./schema/*": {
+      "default": "./src/schema/*.ts"
+    },
+    "./queries": {
+      "default": "./src/queries/index.ts"
+    },
+    "./queries/*": {
+      "default": "./src/queries/*.ts"
+    },
     "./*": {
       "default": "./src/*.ts"
     }
