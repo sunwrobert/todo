@@ -3,26 +3,19 @@
   "type": "module",
   "exports": {
     ".": {
-      "default": "./src/index.ts"
+      "default": "./src/definition/index.ts"
     },
-    "./*": {
-      "default": "./src/*.ts"
+    "./definition": {
+      "default": "./src/definition/index.ts"
     }
   },
   "scripts": {
     "check-types": "tsgo --noEmit"
   },
   "dependencies": {
-    "@orpc/client": "catalog:",
-    "@orpc/openapi": "catalog:",
-    "@orpc/server": "catalog:",
-    "@orpc/zod": "catalog:",
-    "@todo/auth": "workspace:*",
-    "@todo/db": "workspace:*",
-    "@todo/env": "workspace:*",
-    "dotenv": "catalog:",
-    "hono": "catalog:",
-    "zod": "catalog:"
+    "@effect/platform": "catalog:",
+    "@effect/rpc": "catalog:",
+    "effect": "catalog:"
   },
   "devDependencies": {
     "@todo/config": "workspace:*",

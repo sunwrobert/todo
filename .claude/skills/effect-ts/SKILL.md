@@ -5,7 +5,7 @@ description: Provides idiomatic patterns for Effect TypeScript. Use when writing
 
 # Effect-TS
 
-**Reference**: `effect-solutions show <topic>` for detailed examples. Effect source at `~/.local/share/effect-solutions/effect` for deeper reference.
+**Reference**: `effect-solutions show <topic>` for detailed examples. Effect source at `~/.local/share/effect-solutions/effect` for deeper reference. effect-atom source at `~/.local/repos/tim-smart/effect-atom`.
 
 ## Basics
 

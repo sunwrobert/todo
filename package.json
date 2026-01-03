@@ -14,15 +14,16 @@
       "@types/node": "^22.13.14",
       "@cloudflare/workers-types": "^4.20251213.0",
       "hono": "^4.8.2",
-      "@orpc/server": "^1.12.2",
-      "@orpc/openapi": "^1.12.2",
-      "@orpc/zod": "^1.12.2",
       "better-auth": "^1.4.9",
       "alchemy": "^0.82.1",
-      "@orpc/client": "^1.12.2",
       "@libsql/client": "0.15.15",
       "libsql": "0.5.22",
-      "@typescript/native-preview": "^7.0.0-dev.20260101.1"
+      "@typescript/native-preview": "^7.0.0-dev.20260101.1",
+      "effect": "^3.19.0",
+      "@effect/rpc": "^0.73.0",
+      "@effect/platform": "^0.94.0",
+      "@effect/vitest": "^0.22.0",
+      "@effect-atom/atom-react": "^0.4.4"
     }
   },
   "type": "module",
@@ -39,7 +40,7 @@
     "db:generate": "bun run --filter @todo/db db:generate",
     "deploy": "bun run --filter @todo/infra deploy",
     "destroy": "bun run --filter @todo/infra destroy",
-    "prepare": "lefthook install",
+    "prepare": "lefthook install && effect-language-service patch",
     "storybook": "bun run --filter web storybook",
     "test:unit": "bun run --filter '*' test:unit",
     "test:e2e": "bun run --filter @todo/e2e test"
@@ -51,6 +52,7 @@
   },
   "devDependencies": {
     "@cloudflare/workers-types": "catalog:",
+    "@effect/language-service": "^0.63.2",
     "@testing-library/jest-dom": "^6.9.1",
     "@todo/config": "workspace:*",
     "@types/node": "catalog:",

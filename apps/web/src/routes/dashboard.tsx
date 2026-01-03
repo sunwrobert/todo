@@ -1,8 +1,8 @@
-import { useQuery } from "@tanstack/react-query";
+import { Result, useAtomValue } from "@effect-atom/atom-react";
 import { createFileRoute, redirect } from "@tanstack/react-router";
 
 import { getUser } from "@/functions/get-user";
-import { orpc } from "@/utils/orpc";
+import { privateDataAtom } from "@/hooks/use-rpc";
 
 export const Route = createFileRoute("/dashboard")({
   component: RouteComponent,
@@ -21,14 +21,19 @@ export const Route = createFileRoute("/dashboard")({
 
 function RouteComponent() {
   const { session } = Route.useRouteContext();
+  const privateData = useAtomValue(privateDataAtom);
 
-  const privateData = useQuery(orpc.privateData.queryOptions());
+  const apiMessage = Result.match(privateData, {
+    onInitial: () => "Loading...",
+    onFailure: () => "Error",
+    onSuccess: (result) => result.value.message,
+  });
 
   return (
     <div>
       <h1>Dashboard</h1>
       <p>Welcome {session?.user.name}</p>
-      <p>API: {privateData.data?.message}</p>
+      <p>API: {apiMessage}</p>
     </div>
   );
 }
