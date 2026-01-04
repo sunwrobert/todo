@@ -1,3 +1,4 @@
+import { runDbEffect } from "@todo/db/effect";
 import {
   countLists,
   countTasks,
@@ -67,22 +68,24 @@ export const todoRouter = {
     .input(createListInput)
     .handler(async ({ input, context, errors }) => {
       const userId = context.session.user.id;
-      const listCount = await countLists({ userId });
+      const listCount = await runDbEffect(countLists({ userId }));
       if (listCount >= 20) {
         throw errors.CONFLICT({
           message: "List limit reached (20).",
         });
       }
-      return createList({ userId, name: input.name });
+      return runDbEffect(createList({ userId, name: input.name }));
     }),
 
   getList: protectedProcedure
     .input(z.object({ id: z.string().min(1) }))
     .handler(async ({ input, context, errors }) => {
-      const list = await getListById({
-        userId: context.session.user.id,
-        listId: input.id,
-      });
+      const list = await runDbEffect(
+        getListById({
+          userId: context.session.user.id,
+          listId: input.id,
+        })
+      );
       if (!list) {
         throw errors.NOT_FOUND({
           message: "List not found.",
@@ -93,19 +96,21 @@ export const todoRouter = {
 
   getLists: protectedProcedure.handler(async ({ context }) => {
     const userId = context.session.user.id;
-    await ensureDefaultList({ userId });
-    return getLists({ userId });
+    await runDbEffect(ensureDefaultList({ userId }));
+    return runDbEffect(getLists({ userId }));
   }),
 
   updateList: protectedProcedure
     .input(updateListInput)
     .handler(async ({ input, context, errors }) => {
-      const updated = await updateList({
-        userId: context.session.user.id,
-        listId: input.id,
-        name: input.name,
-        position: input.position,
-      });
+      const updated = await runDbEffect(
+        updateList({
+          userId: context.session.user.id,
+          listId: input.id,
+          name: input.name,
+          position: input.position,
+        })
+      );
       if (!updated) {
         throw errors.NOT_FOUND({
           message: "List not found.",
@@ -117,10 +122,12 @@ export const todoRouter = {
   deleteList: protectedProcedure
     .input(z.object({ id: z.string().min(1) }))
     .handler(async ({ input, context, errors }) => {
-      const list = await getListById({
-        userId: context.session.user.id,
-        listId: input.id,
-      });
+      const list = await runDbEffect(
+        getListById({
+          userId: context.session.user.id,
+          listId: input.id,
+        })
+      );
       if (!list) {
         throw errors.NOT_FOUND({
           message: "List not found.",
@@ -132,37 +139,45 @@ export const todoRouter = {
         });
       }
 
-      await deleteList({ userId: context.session.user.id, listId: input.id });
+      await runDbEffect(
+        deleteList({ userId: context.session.user.id, listId: input.id })
+      );
     }),
 
   createTask: protectedProcedure
     .input(createTaskInput)
     .handler(async ({ input, context, errors }) => {
-      const list = await getListById({
-        userId: context.session.user.id,
-        listId: input.listId,
-      });
+      const list = await runDbEffect(
+        getListById({
+          userId: context.session.user.id,
+          listId: input.listId,
+        })
+      );
       if (!list) {
         throw errors.NOT_FOUND({
           message: "List not found.",
         });
       }
-      const taskCount = await countTasks({ listId: input.listId });
+      const taskCount = await runDbEffect(countTasks({ listId: input.listId }));
       if (taskCount >= 500) {
         throw errors.CONFLICT({
           message: "Task limit reached (500).",
         });
       }
-      return createTask({ listId: input.listId, content: input.content });
+      return runDbEffect(
+        createTask({ listId: input.listId, content: input.content })
+      );
     }),
 
   getTask: protectedProcedure
     .input(z.object({ id: z.string().min(1) }))
     .handler(async ({ input, context, errors }) => {
-      const task = await getTaskForUser({
-        userId: context.session.user.id,
-        taskId: input.id,
-      });
+      const task = await runDbEffect(
+        getTaskForUser({
+          userId: context.session.user.id,
+          taskId: input.id,
+        })
+      );
       if (!task) {
         throw errors.NOT_FOUND({
           message: "Task not found.",
@@ -175,28 +190,32 @@ export const todoRouter = {
   getTasks: protectedProcedure
     .input(z.object({ listId: z.string().min(1) }))
     .handler(async ({ input, context, errors }) => {
-      const list = await getListById({
-        userId: context.session.user.id,
-        listId: input.listId,
-      });
+      const list = await runDbEffect(
+        getListById({
+          userId: context.session.user.id,
+          listId: input.listId,
+        })
+      );
       if (!list) {
         throw errors.NOT_FOUND({
           message: "List not found.",
         });
       }
-      return getTasksForList({ listId: input.listId });
+      return runDbEffect(getTasksForList({ listId: input.listId }));
     }),
 
   updateTask: protectedProcedure
     .input(updateTaskInput)
     .handler(async ({ input, context, errors }) => {
-      const updated = await updateTaskForUser({
-        userId: context.session.user.id,
-        taskId: input.id,
-        content: input.content,
-        completed: input.completed,
-        position: input.position,
-      });
+      const updated = await runDbEffect(
+        updateTaskForUser({
+          userId: context.session.user.id,
+          taskId: input.id,
+          content: input.content,
+          completed: input.completed,
+          position: input.position,
+        })
+      );
       if (!updated) {
         throw errors.NOT_FOUND({
           message: "Task not found.",
@@ -208,10 +227,12 @@ export const todoRouter = {
   deleteTask: protectedProcedure
     .input(z.object({ id: z.string().min(1) }))
     .handler(async ({ input, context, errors }) => {
-      const deleted = await deleteTaskForUser({
-        userId: context.session.user.id,
-        taskId: input.id,
-      });
+      const deleted = await runDbEffect(
+        deleteTaskForUser({
+          userId: context.session.user.id,
+          taskId: input.id,
+        })
+      );
       if (!deleted) {
         throw errors.NOT_FOUND({
           message: "Task not found.",
@@ -223,20 +244,24 @@ export const todoRouter = {
     .input(moveTaskInput)
     .handler(async ({ input, context, errors }) => {
       const userId = context.session.user.id;
-      const targetList = await getListById({
-        userId,
-        listId: input.targetListId,
-      });
+      const targetList = await runDbEffect(
+        getListById({
+          userId,
+          listId: input.targetListId,
+        })
+      );
       if (!targetList) {
         throw errors.NOT_FOUND({
           message: "Target list not found.",
         });
       }
-      const updated = await moveTaskForUser({
-        userId,
-        taskId: input.id,
-        targetListId: input.targetListId,
-      });
+      const updated = await runDbEffect(
+        moveTaskForUser({
+          userId,
+          taskId: input.id,
+          targetListId: input.targetListId,
+        })
+      );
       if (!updated) {
         throw errors.NOT_FOUND({
           message: "Task not found.",

@@ -27,10 +27,15 @@
     "check-types": "tsgo --noEmit"
   },
   "dependencies": {
+    "@effect/experimental": "catalog:",
+    "@effect/sql": "catalog:",
+    "@effect/sql-d1": "catalog:",
+    "@effect/sql-drizzle": "catalog:",
     "@libsql/client": "catalog:",
     "@todo/env": "workspace:*",
     "dotenv": "catalog:",
     "drizzle-orm": "^0.45.1",
+    "effect": "catalog:",
     "libsql": "catalog:",
     "zod": "catalog:"
   },
